@@ -127,6 +127,7 @@
             margin: 0 auto 2rem;
             position: relative;
             animation: float 3s ease-in-out infinite;
+            overflow: hidden;
         }
 
         .profile-image img {
@@ -552,7 +553,8 @@
         <section id="home" class="hero">
             <div class="container">
                 <div class="profile-image">
-                    <div class="profile-image-inner">MS</div>
+                    <img src="assets/profile.jpg" alt="Mohamed Suliman" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="profile-image-inner" style="display: none;">MS</div>
                 </div>
                 <h1>Mohamed Suliman</h1>
                 <p class="subtitle">Data Analyst | Python, Power BI, SQL Expert</p>
@@ -717,49 +719,59 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenu = document.getElementById('mobileMenu');
+            const navLinks = document.getElementById('navLinks');
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+            if (mobileMenu && navLinks) {
+                mobileMenu.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
 
-        // Close mobile menu when clicking on a link
-        navLinks.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                navLinks.classList.remove('active');
+                // Close mobile menu when clicking on a link
+                navLinks.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'A') {
+                        navLinks.classList.remove('active');
+                    }
+                });
             }
-        });
 
-        // Smooth scrolling for navigation links with proper offset
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = target.offsetTop - headerHeight - 20; // Added extra padding
+            // Smooth scrolling for navigation links with proper offset
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
                     
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+                    if (target) {
+                        const header = document.querySelector('header');
+                        const headerHeight = header ? header.offsetHeight : 70;
+                        const targetPosition = target.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-        });
 
-        // Header background change on scroll
-        window.addEventListener('scroll', () => {
+            // Header background change on scroll
             const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(15, 15, 35, 0.95)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.05)';
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 100) {
+                        header.style.background = 'rgba(15, 15, 35, 0.95)';
+                    } else {
+                        header.style.background = 'rgba(255, 255, 255, 0.05)';
+                    }
+                });
             }
         });
 
-        // Add loading animation
+        // Page load animation
         window.addEventListener('load', () => {
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.5s ease-in-out';
