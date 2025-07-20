@@ -3,24 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Suliman - Data Analyst Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Commander Mohamed Suliman - Data Explorer | Spaceship Interface</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #00d4ff;
-            --secondary-color: #090979;
-            --accent-color: #ff006e;
-            --dark-bg: #0a0a0f;
-            --darker-bg: #050507;
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --primary-cyan: #00ffff;
+            --primary-blue: #0066ff;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #f471b5;
+            --warning-orange: #fb923c;
+            --success-green: #10b981;
+            --space-black: #000000;
+            --space-dark: #0f0f1a;
+            --space-medium: #1a1a2e;
+            --space-light: #16213e;
+            --glass-light: rgba(255, 255, 255, 0.05);
+            --glass-medium: rgba(255, 255, 255, 0.1);
+            --glass-heavy: rgba(255, 255, 255, 0.15);
             --text-primary: #ffffff;
             --text-secondary: #b3b3b3;
-            --text-muted: #8a8a8a;
-            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-            --glow-primary: 0 0 30px rgba(0, 212, 255, 0.3);
-            --glow-accent: 0 0 30px rgba(255, 0, 110, 0.3);
+            --text-muted: #6b7280;
+            --border-glow: rgba(0, 255, 255, 0.3);
+            --shadow-glow: 0 0 30px rgba(0, 255, 255, 0.2);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         * {
@@ -30,37 +37,114 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--dark-bg);
+            font-family: 'Exo 2', sans-serif;
+            background: var(--space-black);
             color: var(--text-primary);
-            line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            cursor: none;
         }
 
-        /* Animated background */
-        .bg-animation {
+        /* ===========================
+           CUSTOM CURSOR SYSTEM
+        =========================== */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, var(--primary-cyan), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+            transition: transform 0.1s ease;
+        }
+
+        .cursor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--primary-cyan);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.1; }
+        }
+
+        /* ===========================
+           IMMERSIVE SPACE BACKGROUND
+        =========================== */
+        .space-environment {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            opacity: 0.1;
+            z-index: -10;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 25%, #0f0f23 50%, #000000 100%);
         }
 
-        .bg-particle {
+        .stars-field {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            animation: float-particle 20s infinite linear;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
+                radial-gradient(2px 2px at 40px 70px, #00ffff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
+                radial-gradient(1px 1px at 130px 80px, #8b5cf6, transparent),
+                radial-gradient(2px 2px at 160px 30px, #ffffff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: starsMove 120s linear infinite;
         }
 
-        @keyframes float-particle {
+        @keyframes starsMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-1000px); }
+        }
+
+        .galaxy-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse 800px 300px at 0% 0%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 200px at 100% 100%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 400px 400px at 50% 50%, rgba(244, 113, 181, 0.08) 0%, transparent 50%);
+            animation: galaxyRotate 200s linear infinite;
+        }
+
+        @keyframes galaxyRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cosmic-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            animation: particleFloat 15s linear infinite;
+        }
+
+        @keyframes particleFloat {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) translateX(0) scale(0);
                 opacity: 0;
             }
             10% {
@@ -70,1244 +154,2180 @@
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100vh) rotate(360deg);
+                transform: translateY(-100px) translateX(100px) scale(1);
                 opacity: 0;
             }
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Enhanced Header */
-        header {
-            background: rgba(10, 10, 15, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-            position: fixed;
+        .hyperspace-lines {
+            position: absolute;
             width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            filter: drop-shadow(var(--glow-primary));
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-            background: rgba(0, 212, 255, 0.1);
-            box-shadow: var(--glow-primary);
-        }
-
-        /* Enhanced Hero Section */
-        .hero {
-            padding: 160px 0 100px;
-            text-align: center;
-            position: relative;
-            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            padding: 6px;
-            margin: 0 auto;
-            position: relative;
-            animation: pulse-glow 3s ease-in-out infinite alternate;
+            height: 100%;
             overflow: hidden;
         }
 
-        @keyframes pulse-glow {
+        .hyperspace-line {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--primary-cyan), transparent);
+            animation: hyperspaceMove 3s linear infinite;
+        }
+
+        @keyframes hyperspaceMove {
             0% {
-                box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+                transform: translateY(-100px) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
             }
             100% {
-                box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 60px rgba(0, 212, 255, 0.3);
+                transform: translateY(100vh) translateX(50px);
+                opacity: 0;
             }
         }
 
-        .profile-image img {
+        /* ===========================
+           SPACESHIP UI FRAMEWORK
+        =========================== */
+        .ui-panel {
+            background: var(--glass-medium);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            box-shadow: var(--shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ui-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+            animation: scanLine 3s ease-in-out infinite;
         }
 
-        .profile-image:hover img {
-            transform: scale(1.05);
+        @keyframes scanLine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
         }
 
-        .profile-image-inner {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: var(--darker-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            font-weight: 800;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--text-primary), var(--primary-color), var(--accent-color));
+        .hologram-text {
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple), var(--primary-cyan));
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradient-shift 4s ease-in-out infinite;
+            animation: hologramShimmer 4s ease-in-out infinite;
+            text-shadow: 0 0 20px var(--primary-cyan);
         }
 
-        @keyframes gradient-shift {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
+        @keyframes hologramShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
-        .hero .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            font-weight: 500;
+        /* ===========================
+           SPACESHIP NAVIGATION
+        =========================== */
+        .nav-bridge {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glow);
+            transition: var(--transition-smooth);
         }
 
-        .typing-effect {
-            display: inline-block;
-            border-right: 2px solid var(--primary-color);
-            animation: blink 1s infinite;
+        .nav-bridge.active {
+            background: rgba(15, 15, 26, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 255, 255, 0.2);
         }
 
-        @keyframes blink {
-            0%, 50% {
-                border-color: var(--primary-color);
-            }
-            51%, 100% {
-                border-color: transparent;
-            }
-        }
-
-        .cta-buttons {
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .btn {
-            padding: 15px 35px;
-            border-radius: 50px;
+        .command-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .command-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .command-logo:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-control {
+            position: relative;
+        }
+
+        .nav-control a {
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: var(--transition-smooth);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
             position: relative;
             overflow: hidden;
-            font-size: 1rem;
         }
 
-        .btn::before {
+        .nav-control a::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
         }
 
-        .btn:hover::before {
+        .nav-control a:hover::before {
             left: 100%;
         }
 
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        .nav-control a:hover {
+            color: var(--primary-cyan);
+            border-color: var(--border-glow);
+            background: var(--glass-light);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            text-shadow: 0 0 10px var(--primary-cyan);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-color);
-            color: var(--dark-bg);
-            transform: translateY(-3px);
-            box-shadow: var(--glow-primary);
-        }
-
-        /* Enhanced Sections */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 4rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-        }
-
-        /* Enhanced About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 4rem;
-            align-items: center;
-            text-align: center;
-        }
-
-        .about-text {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .about-text p {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--card-bg);
-            border-radius: 15px;
-            border-left: 4px solid var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .about-text p:hover {
-            background: rgba(0, 212, 255, 0.05);
-            transform: translateX(10px);
-        }
-
-        .highlight {
-            color: var(--primary-color);
-            font-weight: 700;
-            position: relative;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .stat:hover::before {
-            transform: scaleX(1);
-        }
-
-        .stat:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-            border-color: var(--primary-color);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        /* Enhanced Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .skill-category {
-            background: var(--card-bg);
-            border-radius: 25px;
-            padding: 2.5rem;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover::before {
-            transform: scaleX(1);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.15);
-            border-color: var(--primary-color);
-        }
-
-        .skill-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 1rem 0;
-            color: var(--text-secondary);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 500;
-        }
-
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
-
-        .skill-list li:hover {
-            color: var(--primary-color);
-            transform: translateX(10px);
-        }
-
-        .skill-list li::before {
-            content: '▶';
-            color: var(--primary-color);
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-list li:hover::before {
-            transform: translateX(5px);
-        }
-
-        /* Enhanced Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 25px;
-            padding: 2.5rem;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--gradient-primary);
-        }
-
-        .project-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.2);
-            border-color: var(--primary-color);
-        }
-
-        .project-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .project-card p {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .project-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            background: rgba(0, 212, 255, 0.1);
-        }
-
-        .project-links a:hover {
-            color: var(--text-primary);
-            background: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Enhanced Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .contact-item {
-            text-align: center;
-            padding: 2.5rem;
-            background: var(--card-bg);
-            border-radius: 25px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .contact-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.15);
-            border-color: var(--primary-color);
-        }
-
-        .contact-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover .contact-icon {
-            transform: scale(1.1);
-            box-shadow: var(--glow-primary);
-        }
-
-        .contact-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .contact-item a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        .contact-item a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Enhanced Footer */
-        footer {
-            background: var(--darker-bg);
-            text-align: center;
-            padding: 3rem 0;
-            border-top: 1px solid rgba(0, 212, 255, 0.1);
-            margin-top: 2rem;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
+        .mobile-nav-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
             gap: 4px;
         }
 
-        .mobile-menu span {
+        .mobile-nav-toggle span {
             width: 25px;
-            height: 3px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
+            height: 2px;
+            background: var(--primary-cyan);
+            transition: var(--transition-smooth);
             border-radius: 2px;
+            box-shadow: 0 0 10px var(--primary-cyan);
         }
 
-        .mobile-menu.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .mobile-menu.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Scroll Progress Bar */
-        .scroll-progress {
+        /* ===========================
+           PROGRESS INDICATORS
+        =========================== */
+        .hyperspace-progress {
             position: fixed;
             top: 0;
             left: 0;
             width: 0%;
             height: 3px;
-            background: var(--gradient-primary);
+            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple), var(--primary-cyan));
             z-index: 1001;
+            box-shadow: 0 0 10px var(--primary-cyan);
             transition: width 0.1s ease;
         }
 
-        /* Responsive Design */
+        /* ===========================
+           COMMAND BRIDGE (HERO)
+        =========================== */
+        .command-bridge {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .command-center {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .commander-avatar {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            position: relative;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+            padding: 4px;
+            animation: avatarPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes avatarPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); }
+            50% { box-shadow: 0 0 50px rgba(139, 92, 246, 0.5); }
+        }
+
+        .commander-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--space-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-cyan);
+            font-weight: 800;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .commander-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                text-shadow: 0 0 20px var(--primary-cyan), 0 0 40px var(--primary-cyan);
+            }
+            50% { 
+                text-shadow: 0 0 30px var(--accent-purple), 0 0 60px var(--accent-purple);
+            }
+        }
+
+        .status-display {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .mission-status {
+            display: inline-block;
+            color: var(--primary-cyan);
+            font-weight: 600;
+            border-right: 2px solid var(--primary-cyan);
+            animation: typingCursor 1s infinite;
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        @keyframes typingCursor {
+            0%, 50% { border-color: var(--primary-cyan); }
+            51%, 100% { border-color: transparent; }
+        }
+
+        .command-actions {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 1rem 2.5rem;
+            background: var(--glass-medium);
+            border: 1px solid var(--border-glow);
+            border-radius: 50px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Orbitron', monospace;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .action-btn:hover::before {
+            left: 100%;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+            border-color: var(--primary-cyan);
+            color: var(--primary-cyan);
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+            color: var(--space-black);
+            border-color: transparent;
+        }
+
+        .action-btn.primary:hover {
+            color: var(--space-black);
+            text-shadow: none;
+        }
+
+        /* ===========================
+           SHIP STATISTICS DISPLAY
+        =========================== */
+        .ship-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-module {
+            background: var(--glass-light);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .stat-module::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-module:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-module:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+            border-color: var(--primary-cyan);
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-cyan);
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px var(--primary-cyan);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===========================
+           SECTION FRAMEWORK
+        =========================== */
+        .ship-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ===========================
+           SYSTEMS GRID (SKILLS)
+        =========================== */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .system-module {
+            background: var(--glass-medium);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .system-module::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .system-module:hover::before {
+            transform: scaleX(1);
+        }
+
+        .system-module:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
+            border-color: var(--primary-cyan);
+        }
+
+        .system-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .system-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--space-black);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .system-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        .system-components {
+            list-style: none;
+        }
+
+        .system-components li {
+            padding: 0.8rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 500;
+        }
+
+        .system-components li:last-child {
+            border-bottom: none;
+        }
+
+        .system-components li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-cyan);
+            animation: componentPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes componentPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .system-components li:hover {
+            color: var(--primary-cyan);
+            transform: translateX(10px);
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        /* ===========================
+           MISSION LOG (PROJECTS)
+        =========================== */
+        .mission-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--glass-light);
+            border: 1px solid var(--border-glow);
+            border-radius: 25px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-weight: 500;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+            color: var(--space-black);
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            text-shadow: none;
+        }
+
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .mission-card {
+            background: var(--glass-medium);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .mission-card.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple));
+        }
+
+        .mission-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
+            border-color: var(--primary-cyan);
+        }
+
+        .mission-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            text-shadow: 0 0 10px var(--primary-cyan);
+            flex: 1;
+        }
+
+        .mission-status {
+            background: linear-gradient(45deg, var(--success-green), var(--primary-cyan));
+            color: var(--space-black);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-family: 'Orbitron', monospace;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .mission-status.featured {
+            background: linear-gradient(45deg, var(--warning-orange), var(--accent-pink));
+            box-shadow: 0 0 15px rgba(251, 146, 60, 0.3);
+        }
+
+        .mission-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .mission-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--primary-cyan);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .tech-tag:hover {
+            background: var(--primary-cyan);
+            color: var(--space-black);
+            box-shadow: 0 0 15px var(--primary-cyan);
+        }
+
+        .mission-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .mission-link {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            background: var(--glass-light);
+            border: 1px solid var(--border-glow);
+            border-radius: 25px;
+            color: var(--primary-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition-smooth);
+            font-family: 'Orbitron', monospace;
+            backdrop-filter: blur(10px);
+        }
+
+        .mission-link:hover {
+            background: var(--primary-cyan);
+            color: var(--space-black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+            text-shadow: none;
+        }
+
+        /* ===========================
+           COMMUNICATION HUB (CONTACT)
+        =========================== */
+        .comm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .comm-channel {
+            background: var(--glass-medium);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .comm-channel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .comm-channel:hover::before {
+            transform: scaleX(1);
+        }
+
+        .comm-channel:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
+            border-color: var(--primary-cyan);
+        }
+
+        .comm-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--space-black);
+            transition: var(--transition-smooth);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .comm-channel:hover .comm-icon {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+        }
+
+        .comm-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        .comm-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .comm-link:hover {
+            color: var(--primary-cyan);
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        /* ===========================
+           SOUND CONTROL PANEL
+        =========================== */
+        .sound-control {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--glass-medium);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            z-index: 1000;
+            color: var(--primary-cyan);
+            font-size: 1.5rem;
+        }
+
+        .sound-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+        }
+
+        .sound-control.muted {
+            color: var(--text-muted);
+            border-color: var(--text-muted);
+        }
+
+        /* ===========================
+           SYSTEM RETURN BUTTON
+        =========================== */
+        .return-to-bridge {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            z-index: 1000;
+            color: var(--space-black);
+            font-size: 1.5rem;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .return-to-bridge.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .return-to-bridge:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.4);
+        }
+
+        /* ===========================
+           SYSTEM NOTIFICATIONS
+        =========================== */
+        .system-notification {
+            position: fixed;
+            top: 120px;
+            right: -450px;
+            background: var(--glass-medium);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 400px;
+            transition: var(--transition-smooth);
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .system-notification.show {
+            right: 30px;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--space-black);
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .notification-text h4 {
+            color: var(--primary-cyan);
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        .notification-text p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ===========================
+           RESPONSIVE DESIGN
+        =========================== */
+        @media (max-width: 1024px) {
+            .commander-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .systems-grid,
+            .missions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links {
+            .nav-controls {
                 display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(10, 10, 15, 0.95);
+                background: rgba(15, 15, 26, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
                 padding: 2rem 0;
                 gap: 0;
-                border-top: 1px solid rgba(0, 212, 255, 0.1);
+                border-top: 1px solid var(--border-glow);
             }
             
-            .nav-links.active {
+            .nav-controls.active {
                 display: flex;
             }
             
-            .nav-links li {
-                padding: 1rem 2rem;
+            .nav-control {
+                padding: 0 2rem;
             }
             
-            .mobile-menu {
+            .nav-control a {
+                display: block;
+                padding: 1rem;
+                border-radius: 0;
+            }
+            
+            .mobile-nav-toggle {
                 display: flex;
             }
             
-            .hero {
-                padding: 140px 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
+            .commander-title {
                 font-size: 2.2rem;
             }
             
-            .cta-buttons {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .command-actions {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .stats {
+            .ship-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .skills-grid,
-            .projects-grid {
+            .systems-grid,
+            .missions-grid,
+            .comm-grid {
                 grid-template-columns: 1fr;
             }
             
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .mission-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 1rem;
             }
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
+            .commander-title {
                 font-size: 1.8rem;
             }
             
-            .stats,
-            .contact-grid {
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .ship-stats,
+            .comm-grid {
                 grid-template-columns: 1fr;
             }
             
-            .profile-image {
+            .commander-avatar {
                 width: 150px;
                 height: 150px;
             }
             
-            .hero .subtitle {
-                font-size: 1.2rem;
+            .status-display {
+                font-size: 1.1rem;
+            }
+            
+            .section-container {
+                padding: 0 1rem;
             }
         }
 
-        /* Scroll animations */
+        /* ===========================
+           ACCESSIBILITY & PERFORMANCE
+        =========================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .stars-field,
+            .galaxy-layer,
+            .cosmic-particles,
+            .hyperspace-lines {
+                animation: none;
+            }
+        }
+
+        /* ===========================
+           LOADING ANIMATION
+        =========================== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--space-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: var(--primary-cyan);
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(0, 255, 255, 0.1);
+            border-top: 3px solid var(--primary-cyan);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        /* ===========================
+           UTILITY CLASSES
+        =========================== */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        .text-glow {
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Initializing Spaceship Systems...</div>
+        </div>
+    </div>
 
-    <!-- Animated Background -->
-    <div class="bg-animation" id="bgAnimation"></div>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
 
-    <header>
-        <nav class="container">
-            <div class="logo">MS</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-                <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
-                <li><a href="#projects"><i class="fas fa-folder"></i> Projects</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    <!-- Immersive Space Environment -->
+    <div class="space-environment">
+        <div class="stars-field"></div>
+        <div class="galaxy-layer"></div>
+        <div class="cosmic-particles" id="cosmicParticles"></div>
+        <div class="hyperspace-lines" id="hyperspaceLines"></div>
+    </div>
+
+    <!-- Hyperspace Progress Indicator -->
+    <div class="hyperspace-progress" id="hyperspaceProgress"></div>
+
+    <!-- Navigation Bridge -->
+    <nav class="nav-bridge" id="navBridge">
+        <div class="nav-container">
+            <div class="command-logo">MS-7</div>
+            <ul class="nav-controls" id="navControls">
+                <li class="nav-control"><a href="#bridge"><i class="fas fa-rocket"></i> Bridge</a></li>
+                <li class="nav-control"><a href="#about"><i class="fas fa-user-astronaut"></i> Commander</a></li>
+                <li class="nav-control"><a href="#systems"><i class="fas fa-cogs"></i> Systems</a></li>
+                <li class="nav-control"><a href="#missions"><i class="fas fa-satellite"></i> Missions</a></li>
+                <li class="nav-control"><a href="#communications"><i class="fas fa-satellite-dish"></i> Comm</a></li>
             </ul>
-            <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-nav-toggle" id="mobileNavToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
+    <!-- Sound Control Panel -->
+    <div class="sound-control" id="soundControl">
+        <i class="fas fa-volume-up"></i>
+    </div>
+
+    <!-- Return to Bridge Button -->
+    <div class="return-to-bridge" id="returnToBridge">
+        <i class="fas fa-rocket"></i>
+    </div>
+
+    <!-- System Notification -->
+    <div class="system-notification" id="systemNotification">
+        <div class="notification-content">
+            <div class="notification-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <div class="notification-text">
+                <h4>System Online</h4>
+                <p>Welcome aboard, Commander!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <div class="hero-content fade-in">
-                    <div class="profile-container">
-                        <div class="profile-image">
-                            <img src="assets/profile.jpg" alt="Mohamed Suliman" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="profile-image-inner" style="display: none;">MS</div>
+        <!-- Command Bridge Section -->
+        <section id="bridge" class="command-bridge">
+            <div class="command-center fade-in">
+                <div class="commander-avatar">
+                    <img src="assets/profile.jpg" alt="Commander Mohamed Suliman" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="avatar-placeholder" style="display: none;">MS</div>
+                </div>
+                <h1 class="commander-title hologram-text">Commander Mohamed Suliman</h1>
+                <p class="status-display">Data Explorer & ML Specialist | <span class="mission-status" id="missionStatus">Navigating Data Galaxies</span></p>
+                <div class="command-actions">
+                    <a href="#missions" class="action-btn primary">
+                        <i class="fas fa-rocket"></i> Launch Missions
+                    </a>
+                    <a href="#communications" class="action-btn">
+                        <i class="fas fa-satellite-dish"></i> Open Channel
+                    </a>
+                </div>
+            </div>
+            
+            <div class="ship-stats fade-in">
+                <div class="stat-module">
+                    <span class="stat-value" data-count="3">0</span>
+                    <span class="stat-label">Years in Service</span>
+                </div>
+                <div class="stat-module">
+                    <span class="stat-value" data-count="60">0</span>
+                    <span class="stat-label">Missions Completed</span>
+                </div>
+                <div class="stat-module">
+                    <span class="stat-value" data-count="85">0</span>
+                    <span class="stat-label">Success Rate %</span>
+                </div>
+                <div class="stat-module">
+                    <span class="stat-value" data-count="200">0</span>
+                    <span class="stat-label">Dashboards Created</span>
+                </div>
+                <div class="stat-module">
+                    <span class="stat-value" data-count="150">0</span>
+                    <span class="stat-label">Credits Saved (K)</span>
+                </div>
+                <div class="stat-module">
+                    <span class="stat-value" data-count="5">0</span>
+                    <span class="stat-label">Galaxy Clusters</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="ship-section">
+            <div class="section-container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title hologram-text">Commander Profile</h2>
+                    <p class="section-subtitle">Meet the data explorer charting courses through the vast universe of Machine Learning and Analytics</p>
+                </div>
+                
+                <div class="ui-panel fade-in" style="padding: 3rem; margin-bottom: 3rem;">
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
+                        Greetings! I'm <span style="color: var(--primary-cyan); font-weight: 600;">Commander Mohamed Suliman</span>, a seasoned data explorer navigating the infinite expanse of <span style="color: var(--primary-cyan); font-weight: 600;">Machine Learning</span> and <span style="color: var(--primary-cyan); font-weight: 600;">Advanced Analytics</span>. Armed with expertise in <span style="color: var(--primary-cyan); font-weight: 600;">Python</span>, <span style="color: var(--primary-cyan); font-weight: 600;">Power BI</span>, and <span style="color: var(--primary-cyan); font-weight: 600;">SQL</span>, I chart precise courses through complex data galaxies.
+                    </p>
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);">
+                        My journey through the <span style="color: var(--primary-cyan); font-weight: 600;">Engineering cosmos</span> has equipped me with advanced navigation systems to transform raw data into powerful business intelligence. Like a skilled spaceship commander, I excel at solving complex interstellar problems and delivering data-driven solutions that propel organizations to new dimensions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Systems Section -->
+        <section id="systems" class="ship-section">
+            <div class="section-container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title hologram-text">Ship Systems</h2>
+                    <p class="section-subtitle">Advanced technological systems powering our data exploration missions</p>
+                </div>
+                
+                <div class="systems-grid">
+                    <div class="system-module fade-in ui-panel">
+                        <div class="system-header">
+                            <div class="system-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="system-title">AI Core Systems</h3>
                         </div>
+                        <ul class="system-components">
+                            <li>Customer Segmentation (K-Means)</li>
+                            <li>Churn Prediction Algorithms</li>
+                            <li>Scikit-learn & Pandas</li>
+                            <li>Statistical Analysis Engine</li>
+                        </ul>
                     </div>
-                    <h1>Mohamed Suliman</h1>
-                    <p class="subtitle">Data Analyst | <span class="typing-effect" id="typingEffect">Python, Power BI, SQL Expert</span></p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-rocket"></i> View My Work
-                        </a>
-                        <a href="#contact" class="btn btn-secondary">
-                            <i class="fas fa-paper-plane"></i> Get In Touch
-                        </a>
+                    
+                    <div class="system-module fade-in ui-panel">
+                        <div class="system-header">
+                            <div class="system-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="system-title">Programming Matrix</h3>
+                        </div>
+                        <ul class="system-components">
+                            <li>Advanced Python Protocols</li>
+                            <li>SQL Database Management</li>
+                            <li>Data Processing & ETL</li>
+                            <li>Algorithm Development</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="system-module fade-in ui-panel">
+                        <div class="system-header">
+                            <div class="system-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="system-title">Visualization Array</h3>
+                        </div>
+                        <ul class="system-components">
+                            <li>Power BI Command Centers</li>
+                            <li>Tableau Analytics Interface</li>
+                            <li>Interactive Report Systems</li>
+                            <li>Advanced Excel Charts</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="system-module fade-in ui-panel">
+                        <div class="system-header">
+                            <div class="system-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3 class="system-title">Data Storage Matrix</h3>
+                        </div>
+                        <ul class="system-components">
+                            <li>PostgreSQL Systems</li>
+                            <li>MySQL Databases</li>
+                            <li>SQL Server Infrastructure</li>
+                            <li>Data Warehousing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="system-module fade-in ui-panel">
+                        <div class="system-header">
+                            <div class="system-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h3 class="system-title">Research Laboratory</h3>
+                        </div>
+                        <ul class="system-components">
+                            <li>A/B Testing Protocols</li>
+                            <li>Hypothesis Testing Engine</li>
+                            <li>Business Intelligence</li>
+                            <li>Predictive Analytics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="system-module fade-in ui-panel">
+                        <div class="system-header">
+                            <div class="system-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3 class="system-title">Engineering Bay</h3>
+                        </div>
+                        <ul class="system-components">
+                            <li>Data Cleaning Protocols</li>
+                            <li>ETL Pipeline Development</li>
+                            <li>Quality Assurance Systems</li>
+                            <li>Feature Engineering</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about">
-            <div class="container">
-                <h2 class="section-title fade-in">About Me</h2>
-                <div class="about-content">
-                   <div class="about-text fade-in">
-                       <p>Hello! I'm <span class="highlight">Mohamed Suliman</span>, a passionate <span class="highlight">Data Analyst</span> with a knack for transforming raw data into actionable insights. With expertise in <span class="highlight">Python</span>, <span class="highlight">Power BI</span>, and <span class="highlight">SQL</span>, I specialize in data visualization, analysis, and business intelligence.</p>
-                       <p>With a background in <span class="highlight">Engineering</span> and a strong foundation in <span class="highlight">data analytics</span>, I thrive on solving complex problems and delivering data-driven solutions. My journey has been fueled by a love for numbers and a desire to help businesses make informed decisions.</p>
-                   </div>
+        <!-- Missions Section -->
+        <section id="missions" class="ship-section">
+            <div class="section-container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title hologram-text">Mission Archives</h2>
+                    <p class="section-subtitle">Successful expeditions across the data universe</p>
+                </div>
+                
+                <div class="mission-filters fade-in">
+                    <div class="filter-btn active" data-category="all">
+                        <i class="fas fa-rocket"></i> All Missions
+                    </div>
+                    <div class="filter-btn" data-category="machine-learning">
+                        <i class="fas fa-brain"></i> AI Expeditions
+                    </div>
+                    <div class="filter-btn" data-category="dashboards">
+                        <i class="fas fa-satellite"></i> Command Centers
+                    </div>
+                    <div class="filter-btn" data-category="analytics">
+                        <i class="fas fa-flask"></i> Research Labs
+                    </div>
+                </div>
 
-                   <div class="stats fade-in">
-                        <div class="stat">
-                            <span class="stat-number" data-count="3">0</span>+
-                            <span class="stat-label">Years of Experience</span>
+                <div class="missions-grid">
+                    <!-- Featured ML Missions -->
+                    <div class="mission-card fade-in" data-category="machine-learning">
+                        <div class="mission-header">
+                            <h3 class="mission-title"><i class="fas fa-users"></i> Customer Galaxy Mapping</h3>
+                            <div class="mission-status featured">Priority</div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="50">0</span>+
-                            <span class="stat-label">Projects Completed</span>
+                        <p class="mission-description">
+                            Deployed advanced K-Means clustering algorithms to map 5 distinct customer galaxies, enabling targeted navigation strategies and improving retention by 40% across the data universe.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">K-Means Clustering</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-learn</span>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="500">0</span>+
-                            <span class="stat-label">Hours of Python</span>
+                        <div class="mission-actions">
+                            <a href="https://github.com/Mohamedsul/customer-segmentation" target="_blank" class="mission-link">
+                                <i class="fab fa-github"></i> Access Mission
+                            </a>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="200">0</span>+
-                            <span class="stat-label">Power BI Reports</span>
+                    </div>
+                    
+                    <div class="mission-card fade-in" data-category="machine-learning">
+                        <div class="mission-header">
+                            <h3 class="mission-title"><i class="fas fa-chart-decline"></i> Churn Prediction System</h3>
+                            <div class="mission-status featured">Priority</div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="400">0</span>+
-                            <span class="stat-label">SQL Queries</span>
+                        <p class="mission-description">
+                            Engineered predictive models achieving 85% accuracy in identifying at-risk entities, generating potential annual savings of $150K+ through targeted retention protocols.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">85% Accuracy</span>
+                            <span class="tech-tag">$150K+ Savings</span>
+                            <span class="tech-tag">Python</span>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="500">0</span>+
-                            <span class="stat-label">Data Visualizations</span>
+                        <div class="mission-actions">
+                            <a href="https://github.com/Mohamedsul/customer-churn-prediction" target="_blank" class="mission-link">
+                                <i class="fab fa-github"></i> Access Mission
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mission-card fade-in" data-category="machine-learning">
+                        <div class="mission-header">
+                            <h3 class="mission-title"><i class="fas fa-rocket"></i> DataTransformX Protocol</h3>
+                            <div class="mission-status">Active</div>
+                        </div>
+                        <p class="mission-description">
+                            Constructed comprehensive ML pipeline analyzing Crunchbase galaxy data to predict startup trajectories. Features advanced preprocessing and evaluation systems.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Classification</span>
+                            <span class="tech-tag">Feature Engineering</span>
+                        </div>
+                        <div class="mission-actions">
+                            <a href="https://github.com/Mohamedsul/dataTransformX" target="_blank" class="mission-link">
+                                <i class="fab fa-github"></i> Access Mission
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Missions -->
+                    <div class="mission-card fade-in" data-category="dashboards">
+                        <div class="mission-header">
+                            <h3 class="mission-title"><i class="fas fa-truck"></i> Supply Chain Command</h3>
+                            <div class="mission-status">Active</div>
+                        </div>
+                        <p class="mission-description">
+                            Constructed comprehensive Power BI command center delivering real-time insights into supply chain operations across multiple star systems.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Real-time Data</span>
+                            <span class="tech-tag">KPI Tracking</span>
+                        </div>
+                        <div class="mission-actions">
+                            <a href="https://github.com/Mohamedsul/Supply-Chain-Analytics-Dashboard-" target="_blank" class="mission-link">
+                                <i class="fab fa-github"></i> Access Mission
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="mission-card fade-in" data-category="dashboards">
+                        <div class="mission-header">
+                            <h3 class="mission-title"><i class="fas fa-gas-pump"></i> Brazilian Fuel Observatory</h3>
+                            <div class="mission-status">Active</div>
+                        </div>
+                        <p class="mission-description">
+                            Developed comprehensive data observatory analyzing Brazilian fuel price patterns using advanced time series analysis and geospatial mapping.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Time Series</span>
+                            <span class="tech-tag">Geospatial</span>
+                        </div>
+                        <div class="mission-actions">
+                            <a href="https://github.com/Mohamedsul/-Brazilian-Fuel-Prices-Analysis-Dashboard/tree/main" target="_blank" class="mission-link">
+                                <i class="fab fa-github"></i> Access Mission
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="mission-card fade-in" data-category="dashboards">
+                        <div class="mission-header">
+                            <h3 class="mission-title"><i class="fas fa-phone"></i> Telecom Control Center</h3>
+                            <div class="mission-status">Completed</div>
+                        </div>
+                        <p class="mission-description">
+                            Comprehensive Power BI analysis of telecom behavior patterns including churn monitoring and predictive insights for retention strategies.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Telecom</span>
+                            <span class="tech-tag">Churn Analysis</span>
+                        </div>
+                        <div class="mission-actions">
+                            <a href="https://github.com/Mohamedsul/Telecom-Customer-Churn-Analysis" target="_blank" class="mission-link">
+                                <i class="fab fa-github"></i> Access Mission
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Analytics Missions -->
+                    <div class="mission-card fade-in" data-category="analytics">
+                        <div class="mission-header">
+                            <h3 class="mission-title"><i class="fas fa-flask"></i> Marketing Research Lab</h3>
+                            <div class="mission-status">Active</div>
+                        </div>
+                        <p class="mission-description">
+                            Advanced statistical analysis of marketing campaign effectiveness using A/B testing methodologies and comprehensive data visualization protocols.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-tag">A/B Testing</span>
+                            <span class="tech-tag">Statistical Analysis</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div class="mission-actions">
+                            <a href="https://github.com/Mohamedsul/AB_Test_Analysis" target="_blank" class="mission-link">
+                                <i class="fab fa-github"></i> Access Mission
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="mission-card fade-in" data-category="analytics">
+                        <div class="mission-header">
+                            <h3 class="mission-title"><i class="fas fa-chart-pie"></i> Business Intelligence Station</h3>
+                            <div class="mission-status">Completed</div>
+                        </div>
+                        <p class="mission-description">
+                            Comprehensive chocolate sales performance analysis using advanced Excel techniques, exploring trends, profitability, and customer behavior patterns.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-tag">Advanced Excel</span>
+                            <span class="tech-tag">Pivot Tables</span>
+                            <span class="tech-tag">Business Intelligence</span>
+                        </div>
+                        <div class="mission-actions">
+                            <a href="https://github.com/Mohamedsul/Business-Analytics-Excel" target="_blank" class="mission-link">
+                                <i class="fab fa-github"></i> Access Mission
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills">
-            <div class="container">
-                <h2 class="section-title fade-in">Skills & Expertise</h2>
-                <div class="skills-grid">
-                    <div class="skill-category fade-in">
-                        <h3><i class="fas fa-code"></i> Programming & Querying</h3>
-                        <ul class="skill-list">
-                            <li>Proficient in Python</li>
-                            <li>Experienced with SQL</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category fade-in">
-                        <h3><i class="fas fa-chart-bar"></i> Data Visualization</h3>
-                        <ul class="skill-list">
-                            <li>Proficient in Power BI</li>
-                            <li>Experienced with Tableau</li>
-                            <li>Skilled in Excel Charts</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category fade-in">
-                        <h3><i class="fas fa-database"></i> Databases</h3>
-                        <ul class="skill-list">
-                            <li>Proficient in PostgreSQL</li>
-                            <li>Experienced with MySQL</li>
-                            <li>Skilled in SQL Server</li>
-                            
-                        </ul>
-                    </div>
-                    <div class="skill-category fade-in">
-                        <h3><i class="fas fa-table"></i> Spreadsheet Skills</h3>
-                        <ul class="skill-list">
-                            <li>Advanced Excel Proficiency</li>
-                            <li>Experienced with Pivot Tables</li>
-                            <li>Skilled in Macros</li>
-                            
-                        </ul>
-                    </div>
-                    <div class="skill-category fade-in">
-                        <h3><i class="fas fa-brain"></i> Data Analysis</h3>
-                        <ul class="skill-list">
-                            <li>Proficient in DAX</li>
-                            <li>Experienced in Statistical Analysis</li>
-                            
-                        </ul>
-                    </div>
-                    <div class="skill-category fade-in">
-                        <h3><i class="fas fa-tools"></i> Data Preparation</h3>
-                        <ul class="skill-list">
-                            <li>Experienced in Data Cleaning</li>
-                            <li>Skilled in ETL Processes</li>
-                            <li>Proficient in Data Validation</li>
-                        </ul>
-                    </div>
+        <!-- Communications Section -->
+        <section id="communications" class="ship-section">
+            <div class="section-container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title hologram-text">Communication Channels</h2>
+                    <p class="section-subtitle">Establish contact with the command bridge</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <div class="container">
-                <h2 class="section-title fade-in">Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card fade-in">
-                      <h3><i class="fas fa-truck"></i> Supply Chain Analytics Dashboard</h3>
-                      <p>A Power BI dashboard delivering actionable insights into supply chain performance. It tracks key metrics like on-time delivery rates, shipping costs, and customer satisfaction to optimize logistics and improve decision-making.</p>
-                      <div class="project-links">
-                           <a href="https://github.com/Mohamedsul/Supply-Chain-Analytics-Dashboard-" target="_blank" rel="noopener noreferrer">
-                           <i class="fab fa-github"></i> View on GitHub
-                          </a>
+                
+                <div class="comm-grid">
+                    <div class="comm-channel fade-in">
+                        <div class="comm-icon">
+                            <i class="fas fa-satellite-dish"></i>
                         </div>
+                        <h3 class="comm-title">Direct Transmission</h3>
+                        <a href="mailto:MOHSUL659@gmail.com" class="comm-link">MOHSUL659@gmail.com</a>
                     </div>
-                    <div class="project-card fade-in"> 
-                        <h3><i class="fas fa-truck"></i> 🛢️ Brazilian Fuel Prices Analysis Dashboard </h3>
-                        <p> A comprehensive data analysis and visualization project exploring Brazilian fuel prices from 2004 to 2021. This dashboard converts raw data from Brazil's National Agency of Petroleum, Natural Gas, and Biofuels (ANP) into actionable business insights using interactive visuals and statistical techniques.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Mohamedsul/-Brazilian-Fuel-Prices-Analysis-Dashboard/tree/main" target="_blank" rel="noopener noreferrer">
-                               <i class="fab fa-github"></i> View on GitHub
-                             </a>
+                    
+                    <div class="comm-channel fade-in">
+                        <div class="comm-icon">
+                            <i class="fas fa-broadcast-tower"></i>
                         </div>
+                        <h3 class="comm-title">Voice Channel</h3>
+                        <a href="tel:+966558674507" class="comm-link">(+966) 55 8674507</a>
                     </div>
-                    <div class="project-card fade-in">
-                        <h3><i class="fas fa-chart-line"></i> Telecom Customer Churn Analysis</h3>
-                        <p>Analyzing customer churn using Power BI to uncover trends and insights. Includes churn rate metrics, customer demographics, and service usage patterns to help identify factors driving customer attrition.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Mohamedsul/Telecom-Customer-Churn-Analysis" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                     <div class="project-card fade-in">
-                        <h3><i class="fas fa-robot"></i> Business-Analytics-Excel</h3>
-                        <p>Business Analytics in Excel A comprehensive chocolate sales performance analysis using Excel. Explore sales trends, product profitability, geographic insights, and customer behavior through interactive dashboards.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Mohamedsul/Business-Analytics-Excel" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-card fade-in">
-                        <h3><i class="fas fa-chart-line"></i> Marketing A/B Testing Project</h3>
-                        <p> Analyzed the effectiveness of a marketing campaign using A/B testing with Python. Applied statistical tests, visualized results, and provided actionable insights to optimize user conversions.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Mohamedsul/AB_Test_Analysis" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-card fade-in">
-                        <h3><i class="fas fa-robot"></i> DataTransformX</h3>
-                        <p>Predicting startup success using a Machine Learning Pipeline! This project analyzes Crunchbase data to classify startups as Operating, IPO, Acquired, or Closed. Includes data preprocessing, feature engineering, and model evaluation.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Mohamedsul/dataTransformX" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="container">
-                <h2 class="section-title fade-in">Let's Connect</h2>
-                <div class="contact-grid">
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3>Email</h3>
-                        <a href="mailto:MOHSUL659@gmail.com">MOHSUL659@gmail.com</a>
-                    </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h3>Phone</h3>
-                        <a href="tel:+966558674507">(+966) 55 8674507</a>
-                    </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
+                    
+                    <div class="comm-channel fade-in">
+                        <div class="comm-icon">
                             <i class="fab fa-linkedin"></i>
                         </div>
-                        <h3>LinkedIn</h3>
-                        <a href="https://www.linkedin.com/in/mohamed--suliman" target="_blank" rel="noopener noreferrer">mohamed--suliman</a>
+                        <h3 class="comm-title">Professional Network</h3>
+                        <a href="https://www.linkedin.com/in/mohamed--suliman" target="_blank" class="comm-link">mohamed--suliman</a>
                     </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
+                    
+                    <div class="comm-channel fade-in">
+                        <div class="comm-icon">
                             <i class="fab fa-github"></i>
                         </div>
-                        <h3>GitHub</h3>
-                        <a href="https://github.com/Mohamedsul" target="_blank" rel="noopener noreferrer">Mohamedsul</a>
+                        <h3 class="comm-title">Code Repository</h3>
+                        <a href="https://github.com/Mohamedsul" target="_blank" class="comm-link">Mohamedsul</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Mohamed Suliman. All Rights Reserved. | Crafted with <i class="fas fa-heart" style="color: var(--accent-color);"></i> and <i class="fas fa-code" style="color: var(--primary-color);"></i></p>
+    <!-- Ship Footer -->
+    <footer class="ship-section" style="padding: 50px 0; border-top: 1px solid var(--border-glow); background: var(--space-dark);">
+        <div class="section-container">
+            <div style="text-align: center; color: var(--text-secondary);">
+                <p>&copy; 2025 Commander Mohamed Suliman. All Rights Reserved.</p>
+                <p style="margin-top: 0.5rem; color: var(--text-muted);">
+                    Crafted with <span style="color: var(--accent-pink);">♥</span> and <span style="color: var(--primary-cyan);">⚡</span> in the Data Galaxy
+                </p>
+            </div>
         </div>
     </footer>
 
+    <!-- Audio Elements -->
+    <audio id="ambientSound" loop preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+P1v3QdBDiP1fPNeSsFJHPF8N+SQAoTXbPq7KlXFAlFnuP2wHUdAziN1fPPeS0GI3LF8N+SQQsWXLPq7KpYFQlHnuT2wXUeFDqV2//agTgJNov1//nJjT0LPZl4HwCj+jY=">
+    </audio>
+
     <script>
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeAnimations();
-            initializeNavigation();
-            initializeScrollEffects();
-            initializeTypingEffect();
-            initializeCounters();
-        });
-
-        // Animated background particles
-        function initializeAnimations() {
-            const bgAnimation = document.getElementById('bgAnimation');
-            
-            // Create floating particles
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    createParticle();
-                }, i * 500);
-            }
-            
-            // Continue creating particles
-            setInterval(createParticle, 1000);
-            
-            function createParticle() {
-                const particle = document.createElement('div');
-                particle.className = 'bg-particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                bgAnimation.appendChild(particle);
+        // ===========================
+        // CORE SYSTEM INITIALIZATION
+        // ===========================
+        class SpaceshipPortfolio {
+            constructor() {
+                this.soundEnabled = false;
+                this.currentSection = 'bridge';
+                this.animationFrameId = null;
+                this.particles = [];
+                this.hyperspaceLines = [];
+                this.missionTexts = [
+                    'Navigating Data Galaxies',
+                    'Machine Learning Navigator',
+                    'Customer Analytics Explorer',
+                    'Business Intelligence Pilot',
+                    'Predictive Analytics Commander',
+                    'Data Visualization Captain'
+                ];
+                this.currentTextIndex = 0;
+                this.charIndex = 0;
+                this.isDeleting = false;
                 
-                // Remove particle after animation
-                setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.parentNode.removeChild(particle);
-                    }
-                }, 25000);
-            }
-        }
-
-        // Navigation functionality
-        function initializeNavigation() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const navLinks = document.getElementById('navLinks');
-            const header = document.querySelector('header');
-
-            // Mobile menu toggle
-            if (mobileMenu && navLinks) {
-                mobileMenu.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                    mobileMenu.classList.toggle('active');
-                });
-
-                // Close mobile menu when clicking on a link
-                navLinks.addEventListener('click', (e) => {
-                    if (e.target.tagName === 'A') {
-                        navLinks.classList.remove('active');
-                        mobileMenu.classList.remove('active');
-                    }
-                });
+                this.init();
             }
 
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const target = document.querySelector(targetId);
-                    
-                    if (target) {
-                        const headerHeight = header ? header.offsetHeight : 80;
-                        const targetPosition = target.offsetTop - headerHeight - 20;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
+            init() {
+                this.setupLoadingSequence();
+                this.initializeParticleSystem();
+                this.initializeHyperspaceLines();
+                this.setupCustomCursor();
+                this.setupNavigation();
+                this.setupScrollEffects();
+                this.setupMissionFilters();
+                this.setupCounterAnimations();
+                this.setupTypingEffect();
+                this.setupSoundControl();
+                this.setupNotifications();
+                this.setupIntersectionObserver();
+                this.showWelcomeNotification();
+            }
 
-        // Scroll effects
-        function initializeScrollEffects() {
-            const header = document.querySelector('header');
-            const scrollProgress = document.getElementById('scrollProgress');
-            
-            // Header background and scroll progress
-            window.addEventListener('scroll', () => {
-                const scrollTop = window.pageYOffset;
-                const docHeight = document.body.scrollHeight - window.innerHeight;
-                const scrollPercent = (scrollTop / docHeight) * 100;
+            // ===========================
+            // LOADING SEQUENCE
+            // ===========================
+            setupLoadingSequence() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                const loadingText = document.querySelector('.loading-text');
                 
-                // Update scroll progress bar
-                if (scrollProgress) {
-                    scrollProgress.style.width = scrollPercent + '%';
-                }
+                const loadingMessages = [
+                    'Initializing Spaceship Systems...',
+                    'Calibrating Navigation Array...',
+                    'Loading Mission Archives...',
+                    'Establishing Communication Links...',
+                    'Systems Online - Welcome Aboard!'
+                ];
                 
-                // Update header background
-                if (header) {
-                    if (scrollTop > 100) {
-                        header.style.background = 'rgba(10, 10, 15, 0.95)';
-                        header.style.boxShadow = '0 5px 25px rgba(0, 212, 255, 0.1)';
+                let messageIndex = 0;
+                const messageInterval = setInterval(() => {
+                    if (messageIndex < loadingMessages.length) {
+                        loadingText.textContent = loadingMessages[messageIndex];
+                        messageIndex++;
                     } else {
-                        header.style.background = 'rgba(10, 10, 15, 0.9)';
-                        header.style.boxShadow = 'none';
+                        clearInterval(messageInterval);
+                        setTimeout(() => {
+                            loadingScreen.classList.add('hidden');
+                            document.body.style.cursor = 'none';
+                        }, 500);
                     }
-                }
-            });
-
-            // Fade in animation on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Typing effect
-        function initializeTypingEffect() {
-            const typingElement = document.getElementById('typingEffect');
-            if (!typingElement) return;
-
-            const texts = [
-                'Python, Power BI, SQL Expert',
-                'Data Visualization Specialist',
-                'Business Intelligence Analyst',
-                'Statistical Analysis Expert'
-            ];
-            
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
-
-            function typeEffect() {
-                const currentText = texts[textIndex];
-                
-                if (isDeleting) {
-                    typingElement.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                } else {
-                    typingElement.textContent = currentText.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingSpeed = 100;
-                }
-
-                if (!isDeleting && charIndex === currentText.length) {
-                    isDeleting = true;
-                    typingSpeed = 2000; // Pause before deleting
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % texts.length;
-                    typingSpeed = 500; // Pause before typing next text
-                }
-
-                setTimeout(typeEffect, typingSpeed);
+                }, 800);
             }
 
-            typeEffect();
-        }
+            // ===========================
+            // PARTICLE SYSTEM
+            // ===========================
+            initializeParticleSystem() {
+                const particlesContainer = document.getElementById('cosmicParticles');
+                this.createParticles(particlesContainer);
+                this.animateParticles();
+            }
 
-        // Animated counters
-        function initializeCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            const observerOptions = {
-                threshold: 0.5
-            };
+            createParticles(container) {
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    const size = Math.random() * 3 + 1;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 15 + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                    
+                    container.appendChild(particle);
+                    this.particles.push(particle);
+                }
+            }
 
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counter = entry.target;
-                        const target = parseInt(counter.getAttribute('data-count'));
-                        const increment = target / 50;
-                        let current = 0;
+            animateParticles() {
+                // Particles are animated via CSS, but we can add dynamic behavior here
+                setInterval(() => {
+                    this.particles.forEach(particle => {
+                        if (Math.random() < 0.001) {
+                            particle.style.backgroundColor = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
+                        }
+                    });
+                }, 100);
+            }
 
-                        const updateCounter = () => {
-                            if (current < target) {
-                                current += increment;
-                                counter.textContent = Math.ceil(current);
-                                setTimeout(updateCounter, 30);
-                            } else {
-                                counter.textContent = target;
+            // ===========================
+            // HYPERSPACE LINES
+            // ===========================
+            initializeHyperspaceLines() {
+                const linesContainer = document.getElementById('hyperspaceLines');
+                this.createHyperspaceLines(linesContainer);
+            }
+
+            createHyperspaceLines(container) {
+                setInterval(() => {
+                    if (this.hyperspaceLines.length < 20) {
+                        const line = document.createElement('div');
+                        line.className = 'hyperspace-line';
+                        line.style.left = Math.random() * 100 + '%';
+                        line.style.animationDelay = Math.random() * 2 + 's';
+                        
+                        container.appendChild(line);
+                        this.hyperspaceLines.push(line);
+                        
+                        setTimeout(() => {
+                            if (line.parentNode) {
+                                line.parentNode.removeChild(line);
+                                this.hyperspaceLines = this.hyperspaceLines.filter(l => l !== line);
                             }
-                        };
+                        }, 3000);
+                    }
+                }, 150);
+            }
 
-                        updateCounter();
-                        counterObserver.unobserve(counter);
+            // ===========================
+            // CUSTOM CURSOR
+            // ===========================
+            setupCustomCursor() {
+                const cursor = document.getElementById('cursor');
+                let mouseX = 0, mouseY = 0;
+                let cursorX = 0, cursorY = 0;
+
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+
+                const animateCursor = () => {
+                    cursorX += (mouseX - cursorX) * 0.1;
+                    cursorY += (mouseY - cursorY) * 0.1;
+                    
+                    cursor.style.left = cursorX - 10 + 'px';
+                    cursor.style.top = cursorY - 10 + 'px';
+                    
+                    requestAnimationFrame(animateCursor);
+                };
+                
+                animateCursor();
+
+                // Cursor interactions
+                document.addEventListener('mouseenter', () => {
+                    cursor.style.opacity = '1';
+                });
+
+                document.addEventListener('mouseleave', () => {
+                    cursor.style.opacity = '0';
+                });
+
+                // Interactive elements
+                const interactiveElements = document.querySelectorAll('a, button, .filter-btn, .mission-card, .system-module');
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        cursor.style.transform = 'scale(1.5)';
+                        cursor.style.backgroundColor = 'rgba(139, 92, 246, 0.8)';
+                    });
+                    
+                    el.addEventListener('mouseleave', () => {
+                        cursor.style.transform = 'scale(1)';
+                        cursor.style.backgroundColor = 'rgba(0, 255, 255, 0.8)';
+                    });
+                });
+            }
+
+            // ===========================
+            // NAVIGATION SYSTEM
+            // ===========================
+            setupNavigation() {
+                const navBridge = document.getElementById('navBridge');
+                const mobileToggle = document.getElementById('mobileNavToggle');
+                const navControls = document.getElementById('navControls');
+
+                // Mobile navigation
+                mobileToggle.addEventListener('click', () => {
+                    navControls.classList.toggle('active');
+                    mobileToggle.classList.toggle('active');
+                });
+
+                // Smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = anchor.getAttribute('href');
+                        const target = document.querySelector(targetId);
+                        
+                        if (target) {
+                            const headerHeight = navBridge.offsetHeight;
+                            const targetPosition = target.offsetTop - headerHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Close mobile menu
+                            navControls.classList.remove('active');
+                            mobileToggle.classList.remove('active');
+                        }
+                    });
+                });
+            }
+
+            // ===========================
+            // SCROLL EFFECTS
+            // ===========================
+            setupScrollEffects() {
+                const navBridge = document.getElementById('navBridge');
+                const hyperspaceProgress = document.getElementById('hyperspaceProgress');
+                const returnToBridge = document.getElementById('returnToBridge');
+
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.pageYOffset;
+                    const docHeight = document.body.scrollHeight - window.innerHeight;
+                    const scrollPercent = (scrollTop / docHeight) * 100;
+
+                    // Update progress bar
+                    hyperspaceProgress.style.width = scrollPercent + '%';
+
+                    // Update navigation
+                    if (scrollTop > 100) {
+                        navBridge.classList.add('active');
+                    } else {
+                        navBridge.classList.remove('active');
+                    }
+
+                    // Show/hide return button
+                    if (scrollTop > 500) {
+                        returnToBridge.classList.add('visible');
+                    } else {
+                        returnToBridge.classList.remove('visible');
                     }
                 });
-            }, observerOptions);
 
-            counters.forEach(counter => {
-                counterObserver.observe(counter);
+                // Return to bridge
+                returnToBridge.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // ===========================
+            // MISSION FILTERS
+            // ===========================
+            setupMissionFilters() {
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                const missionCards = document.querySelectorAll('.mission-card');
+
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const category = button.getAttribute('data-category');
+                        
+                        // Update active filter
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        // Filter missions
+                        missionCards.forEach(card => {
+                            const cardCategory = card.getAttribute('data-category');
+                            
+                            if (category === 'all' || cardCategory === category) {
+                                card.classList.remove('hidden');
+                            } else {
+                                card.classList.add('hidden');
+                            }
+                        });
+
+                        // Show notification
+                        const categoryName = button.textContent.trim();
+                        this.showNotification('Navigation Updated', `Viewing: ${categoryName}`);
+                    });
+                });
+            }
+
+            // ===========================
+            // COUNTER ANIMATIONS
+            // ===========================
+            setupCounterAnimations() {
+                const counters = document.querySelectorAll('.stat-value');
+                
+                const counterObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const counter = entry.target;
+                            const target = parseInt(counter.getAttribute('data-count'));
+                            const increment = target / 60;
+                            let current = 0;
+
+                            const updateCounter = () => {
+                                if (current < target) {
+                                    current += increment;
+                                    counter.textContent = Math.ceil(current);
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.textContent = target;
+                                }
+                            };
+
+                            updateCounter();
+                            counterObserver.unobserve(counter);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                counters.forEach(counter => {
+                    counterObserver.observe(counter);
+                });
+            }
+
+            // ===========================
+            // TYPING EFFECT
+            // ===========================
+            setupTypingEffect() {
+                const missionStatus = document.getElementById('missionStatus');
+                
+                const typeEffect = () => {
+                    const currentText = this.missionTexts[this.currentTextIndex];
+                    
+                    if (this.isDeleting) {
+                        missionStatus.textContent = currentText.substring(0, this.charIndex - 1);
+                        this.charIndex--;
+                    } else {
+                        missionStatus.textContent = currentText.substring(0, this.charIndex + 1);
+                        this.charIndex++;
+                    }
+
+                    let typingSpeed = this.isDeleting ? 50 : 100;
+
+                    if (!this.isDeleting && this.charIndex === currentText.length) {
+                        this.isDeleting = true;
+                        typingSpeed = 2000;
+                    } else if (this.isDeleting && this.charIndex === 0) {
+                        this.isDeleting = false;
+                        this.currentTextIndex = (this.currentTextIndex + 1) % this.missionTexts.length;
+                        typingSpeed = 500;
+                    }
+
+                    setTimeout(typeEffect, typingSpeed);
+                };
+
+                typeEffect();
+            }
+
+            // ===========================
+            // SOUND CONTROL
+            // ===========================
+            setupSoundControl() {
+                const soundControl = document.getElementById('soundControl');
+                const ambientSound = document.getElementById('ambientSound');
+                
+                soundControl.addEventListener('click', () => {
+                    this.soundEnabled = !this.soundEnabled;
+                    
+                    if (this.soundEnabled) {
+                        ambientSound.play().catch(() => {
+                            console.log('Audio play failed - user interaction required');
+                        });
+                        soundControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        soundControl.classList.remove('muted');
+                        this.showNotification('Audio Systems', 'Ambient sounds activated');
+                    } else {
+                        ambientSound.pause();
+                        soundControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                        soundControl.classList.add('muted');
+                        this.showNotification('Audio Systems', 'Ambient sounds deactivated');
+                    }
+                });
+            }
+
+            // ===========================
+            // NOTIFICATIONS
+            // ===========================
+            setupNotifications() {
+                // Notification setup is handled in showNotification method
+            }
+
+            showNotification(title, message) {
+                const notification = document.getElementById('systemNotification');
+                const titleEl = notification.querySelector('h4');
+                const messageEl = notification.querySelector('p');
+                
+                titleEl.textContent = title;
+                messageEl.textContent = message;
+                
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+
+            showWelcomeNotification() {
+                setTimeout(() => {
+                    this.showNotification('Systems Online', 'Welcome aboard, Commander!');
+                }, 2000);
+            }
+
+            // ===========================
+            // INTERSECTION OBSERVER
+            // ===========================
+            setupIntersectionObserver() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+        }
+
+        // ===========================
+        // INITIALIZE SPACESHIP
+        // ===========================
+        document.addEventListener('DOMContentLoaded', () => {
+            new SpaceshipPortfolio();
+        });
+
+        // ===========================
+        // PERFORMANCE OPTIMIZATIONS
+        // ===========================
+        
+        // Pause animations when tab is not visible
+        document.addEventListener('visibilitychange', () => {
+            const animations = document.querySelectorAll('.particle, .hyperspace-line, .stars-field, .galaxy-layer');
+            if (document.hidden) {
+                animations.forEach(el => {
+                    el.style.animationPlayState = 'paused';
+                });
+            } else {
+                animations.forEach(el => {
+                    el.style.animationPlayState = 'running';
+                });
+            }
+        });
+
+        // Reduce motion for accessibility
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.setProperty('--transition-smooth', 'none');
+            document.documentElement.style.setProperty('--transition-bounce', 'none');
+            
+            const animatedElements = document.querySelectorAll('.particle, .hyperspace-line, .stars-field, .galaxy-layer');
+            animatedElements.forEach(el => {
+                el.style.animation = 'none';
             });
         }
 
-        // Page load animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.8s ease-in-out';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
+        // ===========================
+        // EASTER EGGS & INTERACTIONS
+        // ===========================
+        
+        // Konami code easter egg
+        let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.keyCode === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    // Activate special space mode
+                    document.body.style.animation = 'gradient-shift 3s ease-in-out';
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                    }, 3000);
+                    
+                    // Show special notification
+                    const notification = document.getElementById('systemNotification');
+                    const titleEl = notification.querySelector('h4');
+                    const messageEl = notification.querySelector('p');
+                    
+                    titleEl.textContent = 'Secret Protocol Activated!';
+                    messageEl.textContent = 'Welcome to the hidden galaxy, Commander!';
+                    notification.classList.add('show');
+                    
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 4000);
+                    
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
         });
 
-        // Add some interactive cursor effects
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor');
-            if (!cursor) {
-                const newCursor = document.createElement('div');
-                newCursor.className = 'cursor';
-                newCursor.style.cssText = `
-                    position: fixed;
-                    width: 20px;
-                    height: 20px;
-                    background: radial-gradient(circle, var(--primary-color), transparent);
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 9999;
-                    mix-blend-mode: screen;
-                    opacity: 0.7;
-                    transition: transform 0.1s ease;
-                `;
-                document.body.appendChild(newCursor);
-            }
-            
-            const cursorElement = document.querySelector('.cursor');
-            if (cursorElement) {
-                cursorElement.style.left = e.clientX - 10 + 'px';
-                cursorElement.style.top = e.clientY - 10 + 'px';
-            }
+        // ===========================
+        // ERROR HANDLING
+        // ===========================
+        window.addEventListener('error', (e) => {
+            console.error('Spaceship system error:', e.error);
         });
+
+        // ===========================
+        // CONSOLE MESSAGES
+        // ===========================
+        console.log('🚀 Spaceship Portfolio Systems Online!');
+        console.log('🌌 Welcome to Commander Mohamed Suliman\'s Data Galaxy!');
+        console.log('🛸 Navigate through the sections to explore different ship modules');
+        console.log('🎮 Try the Konami code (↑↑↓↓←→←→BA) for a cosmic surprise!');
+        console.log('🔊 Click the sound control to enable ambient space sounds');
+        console.log('⭐ Enjoy your journey through the data universe!');
     </script>
 </body>
 </html>
