@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commander Mohamed Suliman - Data Explorer | Spaceship Interface</title>
+    <title>Commander Mohamed Suliman - Space Explorer | Data Universe Navigator</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,19 +15,18 @@
             --warning-orange: #fb923c;
             --success-green: #10b981;
             --space-black: #000000;
-            --space-dark: #0f0f1a;
+            --space-dark: #0a0a15;
             --space-medium: #1a1a2e;
             --space-light: #16213e;
-            --glass-light: rgba(255, 255, 255, 0.05);
-            --glass-medium: rgba(255, 255, 255, 0.1);
-            --glass-heavy: rgba(255, 255, 255, 0.15);
+            --glass-light: rgba(255, 255, 255, 0.03);
+            --glass-medium: rgba(255, 255, 255, 0.06);
+            --glass-heavy: rgba(255, 255, 255, 0.1);
             --text-primary: #ffffff;
             --text-secondary: #b3b3b3;
             --text-muted: #6b7280;
-            --border-glow: rgba(0, 255, 255, 0.3);
-            --shadow-glow: 0 0 30px rgba(0, 255, 255, 0.2);
+            --border-glow: rgba(0, 255, 255, 0.2);
+            --shadow-glow: 0 0 30px rgba(0, 255, 255, 0.1);
             --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         * {
@@ -43,10 +42,273 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             cursor: none;
+            position: relative;
         }
 
         /* ===========================
-           CUSTOM CURSOR SYSTEM
+           IMMERSIVE SPACE ENVIRONMENT
+        =========================== */
+        .space-universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            background: radial-gradient(ellipse at center, #0a0a15 0%, #050510 50%, #000000 100%);
+            overflow: hidden;
+        }
+
+        /* Deep Space Stars - Multiple Layers */
+        .stars-layer {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(1px 1px at 20% 30%, #ffffff, transparent),
+                radial-gradient(1px 1px at 40% 70%, #00ffff, transparent),
+                radial-gradient(1px 1px at 60% 40%, #ffffff, transparent),
+                radial-gradient(1px 1px at 80% 20%, #8b5cf6, transparent),
+                radial-gradient(1px 1px at 10% 90%, #ffffff, transparent),
+                radial-gradient(2px 2px at 90% 80%, #f471b5, transparent),
+                radial-gradient(1px 1px at 30% 10%, #ffffff, transparent),
+                radial-gradient(1px 1px at 70% 90%, #00ffff, transparent);
+            background-repeat: repeat;
+            background-size: 150px 150px, 200px 200px, 180px 180px, 220px 220px, 160px 160px, 190px 190px, 170px 170px, 210px 210px;
+        }
+
+        .stars-far {
+            animation: starsDrift 300s linear infinite;
+            opacity: 0.3;
+        }
+
+        .stars-medium {
+            animation: starsDrift 200s linear infinite reverse;
+            opacity: 0.6;
+        }
+
+        .stars-near {
+            animation: starsDrift 120s linear infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes starsDrift {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            100% { transform: translateX(-100px) translateY(-100px) rotate(360deg); }
+        }
+
+        /* Nebula Clouds */
+        .nebula-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse 800px 300px at 20% 10%, rgba(139, 92, 246, 0.05) 0%, transparent 70%),
+                radial-gradient(ellipse 600px 400px at 80% 80%, rgba(0, 255, 255, 0.03) 0%, transparent 70%),
+                radial-gradient(ellipse 700px 200px at 60% 40%, rgba(244, 113, 181, 0.04) 0%, transparent 70%),
+                radial-gradient(ellipse 500px 500px at 10% 70%, rgba(16, 185, 129, 0.02) 0%, transparent 70%);
+            animation: nebulaFloat 400s ease-in-out infinite alternate;
+        }
+
+        @keyframes nebulaFloat {
+            0% { transform: translateX(-50px) rotate(0deg); }
+            100% { transform: translateX(50px) rotate(5deg); }
+        }
+
+        /* Planets and Celestial Bodies */
+        .celestial-bodies {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .sun {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #ffaa00 0%, #ff6600 40%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 100px rgba(255, 170, 0, 0.3), 0 0 200px rgba(255, 102, 0, 0.1);
+            animation: sunPulse 8s ease-in-out infinite, slowOrbit 800s linear infinite;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes slowOrbit {
+            0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            animation: planetFloat 60s ease-in-out infinite alternate;
+        }
+
+        .planet-1 {
+            top: 25%;
+            left: 15%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #4338ca, #1e1b4b);
+            box-shadow: 0 0 40px rgba(67, 56, 202, 0.2);
+            animation-duration: 45s;
+        }
+
+        .planet-2 {
+            top: 60%;
+            right: 20%;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #dc2626, #7f1d1d);
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.2);
+            animation-duration: 70s;
+        }
+
+        .planet-3 {
+            top: 80%;
+            left: 25%;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, #059669, #064e3b);
+            box-shadow: 0 0 25px rgba(5, 150, 105, 0.2);
+            animation-duration: 55s;
+        }
+
+        @keyframes planetFloat {
+            0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) translateX(10px) rotate(180deg); }
+            100% { transform: translateY(0px) translateX(0px) rotate(360deg); }
+        }
+
+        .moon {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at 30% 30%, #f3f4f6, #9ca3af);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(243, 244, 246, 0.1);
+        }
+
+        .moon-1 {
+            top: 40%;
+            left: 70%;
+            animation: moonOrbit 30s linear infinite;
+        }
+
+        .moon-2 {
+            top: 70%;
+            right: 40%;
+            animation: moonOrbit 40s linear infinite reverse;
+        }
+
+        @keyframes moonOrbit {
+            0% { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+        }
+
+        /* Shooting Stars */
+        .shooting-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #ffffff, transparent);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
+            transform: translateX(-100px);
+        }
+
+        /* Spaceships */
+        .spaceship-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .spaceship {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .spaceship::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 8px solid #00ffff;
+            transform: rotate(45deg);
+        }
+
+        .spaceship::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 15px;
+            width: 10px;
+            height: 4px;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Floating Particles */
+        .space-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 20s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.8;
+            }
+            95% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) translateX(200px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* ===========================
+           CUSTOM CURSOR
         =========================== */
         .cursor {
             position: fixed;
@@ -71,124 +333,12 @@
             border: 1px solid var(--primary-cyan);
             border-radius: 50%;
             opacity: 0.3;
-            animation: pulse 2s ease-in-out infinite;
+            animation: cursorPulse 2s ease-in-out infinite;
         }
 
-        @keyframes pulse {
+        @keyframes cursorPulse {
             0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
             50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.1; }
-        }
-
-        /* ===========================
-           IMMERSIVE SPACE BACKGROUND
-        =========================== */
-        .space-environment {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -10;
-            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 25%, #0f0f23 50%, #000000 100%);
-        }
-
-        .stars-field {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
-                radial-gradient(2px 2px at 40px 70px, #00ffff, transparent),
-                radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
-                radial-gradient(1px 1px at 130px 80px, #8b5cf6, transparent),
-                radial-gradient(2px 2px at 160px 30px, #ffffff, transparent);
-            background-repeat: repeat;
-            background-size: 200px 100px;
-            animation: starsMove 120s linear infinite;
-        }
-
-        @keyframes starsMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-1000px); }
-        }
-
-        .galaxy-layer {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse 800px 300px at 0% 0%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse 600px 200px at 100% 100%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse 400px 400px at 50% 50%, rgba(244, 113, 181, 0.08) 0%, transparent 50%);
-            animation: galaxyRotate 200s linear infinite;
-        }
-
-        @keyframes galaxyRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .cosmic-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--primary-cyan);
-            border-radius: 50%;
-            animation: particleFloat 15s linear infinite;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) translateX(0) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) translateX(100px) scale(1);
-                opacity: 0;
-            }
-        }
-
-        .hyperspace-lines {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .hyperspace-line {
-            position: absolute;
-            width: 2px;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, var(--primary-cyan), transparent);
-            animation: hyperspaceMove 3s linear infinite;
-        }
-
-        @keyframes hyperspaceMove {
-            0% {
-                transform: translateY(-100px) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) translateX(50px);
-                opacity: 0;
-            }
         }
 
         /* ===========================
@@ -199,7 +349,7 @@
             backdrop-filter: blur(20px);
             border: 1px solid var(--border-glow);
             border-radius: 12px;
-            box-shadow: var(--shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.05);
             position: relative;
             overflow: hidden;
         }
@@ -212,7 +362,7 @@
             width: 100%;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
-            animation: scanLine 3s ease-in-out infinite;
+            animation: scanLine 4s ease-in-out infinite;
         }
 
         @keyframes scanLine {
@@ -237,23 +387,23 @@
         }
 
         /* ===========================
-           SPACESHIP NAVIGATION
+           NAVIGATION HUD
         =========================== */
-        .nav-bridge {
+        .nav-hud {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(15, 15, 26, 0.95);
+            background: rgba(10, 10, 21, 0.8);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-glow);
             transition: var(--transition-smooth);
         }
 
-        .nav-bridge.active {
-            background: rgba(15, 15, 26, 0.98);
-            box-shadow: 0 5px 30px rgba(0, 255, 255, 0.2);
+        .nav-hud.active {
+            background: rgba(10, 10, 21, 0.95);
+            box-shadow: 0 5px 30px rgba(0, 255, 255, 0.1);
         }
 
         .nav-container {
@@ -300,10 +450,6 @@
             list-style: none;
         }
 
-        .nav-control {
-            position: relative;
-        }
-
         .nav-control a {
             color: var(--text-secondary);
             text-decoration: none;
@@ -337,39 +483,8 @@
             color: var(--primary-cyan);
             border-color: var(--border-glow);
             background: var(--glass-light);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
             text-shadow: 0 0 10px var(--primary-cyan);
-        }
-
-        .mobile-nav-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 4px;
-        }
-
-        .mobile-nav-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--primary-cyan);
-            transition: var(--transition-smooth);
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--primary-cyan);
-        }
-
-        /* ===========================
-           PROGRESS INDICATORS
-        =========================== */
-        .hyperspace-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple), var(--primary-cyan));
-            z-index: 1001;
-            box-shadow: 0 0 10px var(--primary-cyan);
-            transition: width 0.1s ease;
         }
 
         /* ===========================
@@ -399,12 +514,18 @@
             border-radius: 50%;
             background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
             padding: 4px;
-            animation: avatarPulse 4s ease-in-out infinite;
+            animation: avatarFloat 6s ease-in-out infinite;
         }
 
-        @keyframes avatarPulse {
-            0%, 100% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); }
-            50% { box-shadow: 0 0 50px rgba(139, 92, 246, 0.5); }
+        @keyframes avatarFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); 
+            }
+            50% { 
+                transform: translateY(-10px) rotate(1deg);
+                box-shadow: 0 0 50px rgba(139, 92, 246, 0.3); 
+            }
         }
 
         .commander-avatar img {
@@ -433,7 +554,7 @@
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            animation: titleGlow 3s ease-in-out infinite;
+            animation: titleGlow 4s ease-in-out infinite;
         }
 
         @keyframes titleGlow {
@@ -457,7 +578,7 @@
             color: var(--primary-cyan);
             font-weight: 600;
             border-right: 2px solid var(--primary-cyan);
-            animation: typingCursor 1s infinite;
+            animation: typingCursor 1.5s infinite;
             text-shadow: 0 0 10px var(--primary-cyan);
         }
 
@@ -483,7 +604,7 @@
             text-decoration: none;
             font-weight: 600;
             font-family: 'Orbitron', monospace;
-            transition: var(--transition-bounce);
+            transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(20px);
@@ -496,7 +617,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
             transition: left 0.6s ease;
         }
 
@@ -506,7 +627,7 @@
 
         .action-btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
             border-color: var(--primary-cyan);
             color: var(--primary-cyan);
             text-shadow: 0 0 10px var(--primary-cyan);
@@ -524,7 +645,7 @@
         }
 
         /* ===========================
-           SHIP STATISTICS DISPLAY
+           SHIP STATISTICS
         =========================== */
         .ship-stats {
             display: grid;
@@ -566,7 +687,7 @@
 
         .stat-module:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.1);
             border-color: var(--primary-cyan);
         }
 
@@ -624,7 +745,7 @@
         }
 
         /* ===========================
-           SYSTEMS GRID (SKILLS)
+           SYSTEMS GRID
         =========================== */
         .systems-grid {
             display: grid;
@@ -661,7 +782,7 @@
 
         .system-module:hover {
             transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.1);
             border-color: var(--primary-cyan);
         }
 
@@ -682,7 +803,7 @@
             justify-content: center;
             font-size: 1.5rem;
             color: var(--space-black);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
         }
 
         .system-title {
@@ -719,7 +840,7 @@
             background: var(--primary-cyan);
             border-radius: 50%;
             box-shadow: 0 0 10px var(--primary-cyan);
-            animation: componentPulse 2s ease-in-out infinite;
+            animation: componentPulse 3s ease-in-out infinite;
         }
 
         @keyframes componentPulse {
@@ -734,7 +855,7 @@
         }
 
         /* ===========================
-           MISSION LOG (PROJECTS)
+           MISSION ARCHIVE
         =========================== */
         .mission-filters {
             display: flex;
@@ -763,7 +884,7 @@
             background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
             color: var(--space-black);
             border-color: transparent;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
             text-shadow: none;
         }
 
@@ -804,7 +925,7 @@
 
         .mission-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.1);
             border-color: var(--primary-cyan);
         }
 
@@ -833,12 +954,12 @@
             font-weight: 600;
             text-transform: uppercase;
             font-family: 'Orbitron', monospace;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
 
         .mission-status.featured {
             background: linear-gradient(45deg, var(--warning-orange), var(--accent-pink));
-            box-shadow: 0 0 15px rgba(251, 146, 60, 0.3);
+            box-shadow: 0 0 15px rgba(251, 146, 60, 0.2);
         }
 
         .mission-description {
@@ -898,12 +1019,12 @@
             background: var(--primary-cyan);
             color: var(--space-black);
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
             text-shadow: none;
         }
 
         /* ===========================
-           COMMUNICATION HUB (CONTACT)
+           COMMUNICATION HUB
         =========================== */
         .comm-grid {
             display: grid;
@@ -941,7 +1062,7 @@
 
         .comm-channel:hover {
             transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.1);
             border-color: var(--primary-cyan);
         }
 
@@ -957,12 +1078,12 @@
             font-size: 2rem;
             color: var(--space-black);
             transition: var(--transition-smooth);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
         }
 
         .comm-channel:hover .comm-icon {
             transform: scale(1.1) rotate(360deg);
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
         }
 
         .comm-title {
@@ -988,7 +1109,7 @@
         }
 
         /* ===========================
-           SOUND CONTROL PANEL
+           CONTROL PANELS
         =========================== */
         .sound-control {
             position: fixed;
@@ -1012,7 +1133,7 @@
 
         .sound-control:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
         }
 
         .sound-control.muted {
@@ -1020,9 +1141,6 @@
             border-color: var(--text-muted);
         }
 
-        /* ===========================
-           SYSTEM RETURN BUTTON
-        =========================== */
         .return-to-bridge {
             position: fixed;
             bottom: 30px;
@@ -1041,7 +1159,7 @@
             z-index: 1000;
             color: var(--space-black);
             font-size: 1.5rem;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
         }
 
         .return-to-bridge.visible {
@@ -1051,7 +1169,7 @@
 
         .return-to-bridge:hover {
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.3);
         }
 
         /* ===========================
@@ -1069,7 +1187,7 @@
             max-width: 400px;
             transition: var(--transition-smooth);
             z-index: 1001;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .system-notification.show {
@@ -1092,7 +1210,7 @@
             justify-content: center;
             color: var(--space-black);
             font-size: 1.2rem;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
         }
 
         .notification-text h4 {
@@ -1106,133 +1224,6 @@
         .notification-text p {
             color: var(--text-secondary);
             font-size: 0.9rem;
-        }
-
-        /* ===========================
-           RESPONSIVE DESIGN
-        =========================== */
-        @media (max-width: 1024px) {
-            .commander-title {
-                font-size: 2.8rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .systems-grid,
-            .missions-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-controls {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(15, 15, 26, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 2rem 0;
-                gap: 0;
-                border-top: 1px solid var(--border-glow);
-            }
-            
-            .nav-controls.active {
-                display: flex;
-            }
-            
-            .nav-control {
-                padding: 0 2rem;
-            }
-            
-            .nav-control a {
-                display: block;
-                padding: 1rem;
-                border-radius: 0;
-            }
-            
-            .mobile-nav-toggle {
-                display: flex;
-            }
-            
-            .commander-title {
-                font-size: 2.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .command-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .ship-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .systems-grid,
-            .missions-grid,
-            .comm-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .mission-filters {
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .commander-title {
-                font-size: 1.8rem;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-            
-            .ship-stats,
-            .comm-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .commander-avatar {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .status-display {
-                font-size: 1.1rem;
-            }
-            
-            .section-container {
-                padding: 0 1rem;
-            }
-        }
-
-        /* ===========================
-           ACCESSIBILITY & PERFORMANCE
-        =========================== */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .stars-field,
-            .galaxy-layer,
-            .cosmic-particles,
-            .hyperspace-lines {
-                animation: none;
-            }
         }
 
         /* ===========================
@@ -1286,6 +1277,125 @@
         }
 
         /* ===========================
+           RESPONSIVE DESIGN
+        =========================== */
+        @media (max-width: 1024px) {
+            .commander-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .systems-grid,
+            .missions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .sun {
+                width: 80px;
+                height: 80px;
+            }
+
+            .planet-1 {
+                width: 60px;
+                height: 60px;
+            }
+
+            .planet-2 {
+                width: 45px;
+                height: 45px;
+            }
+
+            .planet-3 {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-controls {
+                display: none;
+            }
+            
+            .commander-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .command-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .ship-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .systems-grid,
+            .missions-grid,
+            .comm-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sun {
+                width: 60px;
+                height: 60px;
+            }
+
+            .planet {
+                transform: scale(0.8);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .commander-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .ship-stats,
+            .comm-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .commander-avatar {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .status-display {
+                font-size: 1.1rem;
+            }
+            
+            .section-container {
+                padding: 0 1rem;
+            }
+
+            .celestial-bodies {
+                transform: scale(0.7);
+            }
+        }
+
+        /* ===========================
+           ACCESSIBILITY
+        =========================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ===========================
            UTILITY CLASSES
         =========================== */
         .fade-in {
@@ -1299,10 +1409,6 @@
             transform: translateY(0);
         }
 
-        .text-glow {
-            text-shadow: 0 0 10px currentColor;
-        }
-
         .hidden {
             display: none !important;
         }
@@ -1313,26 +1419,45 @@
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
             <div class="loading-spinner"></div>
-            <div class="loading-text">Initializing Spaceship Systems...</div>
+            <div class="loading-text">Initializing Deep Space Systems...</div>
         </div>
     </div>
 
     <!-- Custom Cursor -->
     <div class="cursor" id="cursor"></div>
 
-    <!-- Immersive Space Environment -->
-    <div class="space-environment">
-        <div class="stars-field"></div>
-        <div class="galaxy-layer"></div>
-        <div class="cosmic-particles" id="cosmicParticles"></div>
-        <div class="hyperspace-lines" id="hyperspaceLines"></div>
+    <!-- Immersive Space Universe -->
+    <div class="space-universe">
+        <!-- Multiple Star Layers for Parallax -->
+        <div class="stars-layer stars-far"></div>
+        <div class="stars-layer stars-medium"></div>
+        <div class="stars-layer stars-near"></div>
+        
+        <!-- Nebula Clouds -->
+        <div class="nebula-layer"></div>
+        
+        <!-- Celestial Bodies -->
+        <div class="celestial-bodies">
+            <div class="sun"></div>
+            <div class="planet planet-1"></div>
+            <div class="planet planet-2"></div>
+            <div class="planet planet-3"></div>
+            <div class="moon moon-1"></div>
+            <div class="moon moon-2"></div>
+        </div>
+        
+        <!-- Shooting Stars -->
+        <div class="shooting-stars" id="shootingStars"></div>
+        
+        <!-- Spaceships -->
+        <div class="spaceship-container" id="spaceshipContainer"></div>
+        
+        <!-- Floating Particles -->
+        <div class="space-particles" id="spaceParticles"></div>
     </div>
 
-    <!-- Hyperspace Progress Indicator -->
-    <div class="hyperspace-progress" id="hyperspaceProgress"></div>
-
-    <!-- Navigation Bridge -->
-    <nav class="nav-bridge" id="navBridge">
+    <!-- Navigation HUD -->
+    <nav class="nav-hud" id="navHud">
         <div class="nav-container">
             <div class="command-logo">MS-7</div>
             <ul class="nav-controls" id="navControls">
@@ -1342,20 +1467,14 @@
                 <li class="nav-control"><a href="#missions"><i class="fas fa-satellite"></i> Missions</a></li>
                 <li class="nav-control"><a href="#communications"><i class="fas fa-satellite-dish"></i> Comm</a></li>
             </ul>
-            <div class="mobile-nav-toggle" id="mobileNavToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <!-- Sound Control Panel -->
+    <!-- Control Panels -->
     <div class="sound-control" id="soundControl">
         <i class="fas fa-volume-up"></i>
     </div>
 
-    <!-- Return to Bridge Button -->
     <div class="return-to-bridge" id="returnToBridge">
         <i class="fas fa-rocket"></i>
     </div>
@@ -1368,7 +1487,7 @@
             </div>
             <div class="notification-text">
                 <h4>System Online</h4>
-                <p>Welcome aboard, Commander!</p>
+                <p>Welcome to deep space, Commander!</p>
             </div>
         </div>
     </div>
@@ -1383,7 +1502,7 @@
                     <div class="avatar-placeholder" style="display: none;">MS</div>
                 </div>
                 <h1 class="commander-title hologram-text">Commander Mohamed Suliman</h1>
-                <p class="status-display">Data Explorer & ML Specialist | <span class="mission-status" id="missionStatus">Navigating Data Galaxies</span></p>
+                <p class="status-display">Deep Space Data Explorer | <span class="mission-status" id="missionStatus">Navigating Data Galaxies</span></p>
                 <div class="command-actions">
                     <a href="#missions" class="action-btn primary">
                         <i class="fas fa-rocket"></i> Launch Missions
@@ -1432,10 +1551,10 @@
                 
                 <div class="ui-panel fade-in" style="padding: 3rem; margin-bottom: 3rem;">
                     <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                        Greetings! I'm <span style="color: var(--primary-cyan); font-weight: 600;">Commander Mohamed Suliman</span>, a seasoned data explorer navigating the infinite expanse of <span style="color: var(--primary-cyan); font-weight: 600;">Machine Learning</span> and <span style="color: var(--primary-cyan); font-weight: 600;">Advanced Analytics</span>. Armed with expertise in <span style="color: var(--primary-cyan); font-weight: 600;">Python</span>, <span style="color: var(--primary-cyan); font-weight: 600;">Power BI</span>, and <span style="color: var(--primary-cyan); font-weight: 600;">SQL</span>, I chart precise courses through complex data galaxies.
+                        Greetings from the depths of space! I'm <span style="color: var(--primary-cyan); font-weight: 600;">Commander Mohamed Suliman</span>, a seasoned data explorer navigating the infinite expanse of <span style="color: var(--primary-cyan); font-weight: 600;">Machine Learning</span> and <span style="color: var(--primary-cyan); font-weight: 600;">Advanced Analytics</span>. Armed with expertise in <span style="color: var(--primary-cyan); font-weight: 600;">Python</span>, <span style="color: var(--primary-cyan); font-weight: 600;">Power BI</span>, and <span style="color: var(--primary-cyan); font-weight: 600;">SQL</span>, I chart precise courses through complex data galaxies.
                     </p>
                     <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);">
-                        My journey through the <span style="color: var(--primary-cyan); font-weight: 600;">Engineering cosmos</span> has equipped me with advanced navigation systems to transform raw data into powerful business intelligence. Like a skilled spaceship commander, I excel at solving complex interstellar problems and delivering data-driven solutions that propel organizations to new dimensions.
+                        My journey through the <span style="color: var(--primary-cyan); font-weight: 600;">Engineering cosmos</span> has equipped me with advanced navigation systems to transform raw data into powerful business intelligence. Like a skilled spaceship commander, I excel at solving complex interstellar problems and delivering data-driven solutions that propel organizations to new dimensions of the universe.
                     </p>
                 </div>
             </div>
@@ -1446,7 +1565,7 @@
             <div class="section-container">
                 <div class="section-header fade-in">
                     <h2 class="section-title hologram-text">Ship Systems</h2>
-                    <p class="section-subtitle">Advanced technological systems powering our data exploration missions</p>
+                    <p class="section-subtitle">Advanced technological systems powering our deep space data exploration missions</p>
                 </div>
                 
                 <div class="systems-grid">
@@ -1548,7 +1667,7 @@
             <div class="section-container">
                 <div class="section-header fade-in">
                     <h2 class="section-title hologram-text">Mission Archives</h2>
-                    <p class="section-subtitle">Successful expeditions across the data universe</p>
+                    <p class="section-subtitle">Successful expeditions across the data universe and beyond</p>
                 </div>
                 
                 <div class="mission-filters fade-in">
@@ -1740,7 +1859,7 @@
             <div class="section-container">
                 <div class="section-header fade-in">
                     <h2 class="section-title hologram-text">Communication Channels</h2>
-                    <p class="section-subtitle">Establish contact with the command bridge</p>
+                    <p class="section-subtitle">Establish contact with the command bridge across space and time</p>
                 </div>
                 
                 <div class="comm-grid">
@@ -1786,7 +1905,7 @@
             <div style="text-align: center; color: var(--text-secondary);">
                 <p>&copy; 2025 Commander Mohamed Suliman. All Rights Reserved.</p>
                 <p style="margin-top: 0.5rem; color: var(--text-muted);">
-                    Crafted with <span style="color: var(--accent-pink);">♥</span> and <span style="color: var(--primary-cyan);">⚡</span> in the Data Galaxy
+                    Crafted with <span style="color: var(--accent-pink);">♥</span> and <span style="color: var(--primary-cyan);">⚡</span> in the depths of space
                 </p>
             </div>
         </div>
@@ -1799,22 +1918,22 @@
 
     <script>
         // ===========================
-        // CORE SYSTEM INITIALIZATION
+        // IMMERSIVE SPACE SYSTEM
         // ===========================
-        class SpaceshipPortfolio {
+        class DeepSpacePortfolio {
             constructor() {
                 this.soundEnabled = false;
-                this.currentSection = 'bridge';
                 this.animationFrameId = null;
+                this.spaceships = [];
+                this.shootingStars = [];
                 this.particles = [];
-                this.hyperspaceLines = [];
                 this.missionTexts = [
                     'Navigating Data Galaxies',
                     'Machine Learning Navigator',
-                    'Customer Analytics Explorer',
-                    'Business Intelligence Pilot',
-                    'Predictive Analytics Commander',
-                    'Data Visualization Captain'
+                    'Deep Space Explorer',
+                    'Cosmic Data Analyst',
+                    'Interstellar Problem Solver',
+                    'Universe Data Commander'
                 ];
                 this.currentTextIndex = 0;
                 this.charIndex = 0;
@@ -1825,17 +1944,16 @@
 
             init() {
                 this.setupLoadingSequence();
-                this.initializeParticleSystem();
-                this.initializeHyperspaceLines();
                 this.setupCustomCursor();
                 this.setupNavigation();
                 this.setupScrollEffects();
+                this.createSpaceEnvironment();
                 this.setupMissionFilters();
                 this.setupCounterAnimations();
                 this.setupTypingEffect();
                 this.setupSoundControl();
-                this.setupNotifications();
                 this.setupIntersectionObserver();
+                this.startSpaceAnimations();
                 this.showWelcomeNotification();
             }
 
@@ -1847,11 +1965,11 @@
                 const loadingText = document.querySelector('.loading-text');
                 
                 const loadingMessages = [
-                    'Initializing Spaceship Systems...',
-                    'Calibrating Navigation Array...',
-                    'Loading Mission Archives...',
-                    'Establishing Communication Links...',
-                    'Systems Online - Welcome Aboard!'
+                    'Initializing Deep Space Systems...',
+                    'Calibrating Stellar Navigation...',
+                    'Loading Cosmic Coordinates...',
+                    'Establishing Interstellar Links...',
+                    'Deep Space Systems Online!'
                 ];
                 
                 let messageIndex = 0;
@@ -1870,16 +1988,18 @@
             }
 
             // ===========================
-            // PARTICLE SYSTEM
+            // SPACE ENVIRONMENT CREATION
             // ===========================
-            initializeParticleSystem() {
-                const particlesContainer = document.getElementById('cosmicParticles');
-                this.createParticles(particlesContainer);
-                this.animateParticles();
+            createSpaceEnvironment() {
+                this.createFloatingParticles();
+                this.createShootingStars();
+                this.scheduleSpaceships();
             }
 
-            createParticles(container) {
-                for (let i = 0; i < 50; i++) {
+            createFloatingParticles() {
+                const particlesContainer = document.getElementById('spaceParticles');
+                
+                for (let i = 0; i < 30; i++) {
                     const particle = document.createElement('div');
                     particle.className = 'particle';
                     
@@ -1887,52 +2007,89 @@
                     particle.style.width = size + 'px';
                     particle.style.height = size + 'px';
                     particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDelay = Math.random() * 15 + 's';
-                    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                    particle.style.animationDelay = Math.random() * 20 + 's';
+                    particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
                     
-                    container.appendChild(particle);
+                    const colors = ['#00ffff', '#8b5cf6', '#f471b5', '#10b981'];
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    particlesContainer.appendChild(particle);
                     this.particles.push(particle);
                 }
             }
 
-            animateParticles() {
-                // Particles are animated via CSS, but we can add dynamic behavior here
+            createShootingStars() {
+                const shootingContainer = document.getElementById('shootingStars');
+                
                 setInterval(() => {
-                    this.particles.forEach(particle => {
-                        if (Math.random() < 0.001) {
-                            particle.style.backgroundColor = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
-                        }
-                    });
-                }, 100);
-            }
-
-            // ===========================
-            // HYPERSPACE LINES
-            // ===========================
-            initializeHyperspaceLines() {
-                const linesContainer = document.getElementById('hyperspaceLines');
-                this.createHyperspaceLines(linesContainer);
-            }
-
-            createHyperspaceLines(container) {
-                setInterval(() => {
-                    if (this.hyperspaceLines.length < 20) {
-                        const line = document.createElement('div');
-                        line.className = 'hyperspace-line';
-                        line.style.left = Math.random() * 100 + '%';
-                        line.style.animationDelay = Math.random() * 2 + 's';
+                    if (Math.random() < 0.3) {
+                        const star = document.createElement('div');
+                        star.className = 'shooting-star';
                         
-                        container.appendChild(line);
-                        this.hyperspaceLines.push(line);
+                        star.style.left = Math.random() * 100 + '%';
+                        star.style.top = Math.random() * 50 + '%';
+                        star.style.animation = 'shootingStar 2s linear forwards';
+                        
+                        shootingContainer.appendChild(star);
                         
                         setTimeout(() => {
-                            if (line.parentNode) {
-                                line.parentNode.removeChild(line);
-                                this.hyperspaceLines = this.hyperspaceLines.filter(l => l !== line);
+                            if (star.parentNode) {
+                                star.parentNode.removeChild(star);
                             }
-                        }, 3000);
+                        }, 2000);
                     }
-                }, 150);
+                }, 3000);
+            }
+
+            scheduleSpaceships() {
+                setInterval(() => {
+                    if (Math.random() < 0.4) {
+                        this.createSpaceship();
+                    }
+                }, 8000);
+            }
+
+            createSpaceship() {
+                const container = document.getElementById('spaceshipContainer');
+                const spaceship = document.createElement('div');
+                spaceship.className = 'spaceship';
+                
+                const startSide = Math.random() < 0.5 ? 'left' : 'right';
+                const startY = Math.random() * 80 + 10;
+                
+                if (startSide === 'left') {
+                    spaceship.style.left = '-50px';
+                    spaceship.style.top = startY + '%';
+                    spaceship.style.transform = 'rotate(45deg)';
+                } else {
+                    spaceship.style.right = '-50px';
+                    spaceship.style.top = startY + '%';
+                    spaceship.style.transform = 'rotate(-135deg)';
+                }
+                
+                container.appendChild(spaceship);
+                
+                // Animate spaceship
+                setTimeout(() => {
+                    spaceship.style.opacity = '1';
+                    spaceship.style.transition = 'all 3s linear';
+                    
+                    if (startSide === 'left') {
+                        spaceship.style.left = 'calc(100% + 50px)';
+                        spaceship.style.top = (startY - 20) + '%';
+                    } else {
+                        spaceship.style.right = 'calc(100% + 50px)';
+                        spaceship.style.top = (startY - 20) + '%';
+                    }
+                }, 100);
+                
+                setTimeout(() => {
+                    if (spaceship.parentNode) {
+                        spaceship.parentNode.removeChild(spaceship);
+                    }
+                }, 3500);
+                
+                this.spaceships.push(spaceship);
             }
 
             // ===========================
@@ -1961,25 +2118,16 @@
                 animateCursor();
 
                 // Cursor interactions
-                document.addEventListener('mouseenter', () => {
-                    cursor.style.opacity = '1';
-                });
-
-                document.addEventListener('mouseleave', () => {
-                    cursor.style.opacity = '0';
-                });
-
-                // Interactive elements
                 const interactiveElements = document.querySelectorAll('a, button, .filter-btn, .mission-card, .system-module');
                 interactiveElements.forEach(el => {
                     el.addEventListener('mouseenter', () => {
                         cursor.style.transform = 'scale(1.5)';
-                        cursor.style.backgroundColor = 'rgba(139, 92, 246, 0.8)';
+                        cursor.style.background = 'radial-gradient(circle, rgba(139, 92, 246, 0.8), transparent)';
                     });
                     
                     el.addEventListener('mouseleave', () => {
                         cursor.style.transform = 'scale(1)';
-                        cursor.style.backgroundColor = 'rgba(0, 255, 255, 0.8)';
+                        cursor.style.background = 'radial-gradient(circle, rgba(0, 255, 255, 0.8), transparent)';
                     });
                 });
             }
@@ -1988,17 +2136,6 @@
             // NAVIGATION SYSTEM
             // ===========================
             setupNavigation() {
-                const navBridge = document.getElementById('navBridge');
-                const mobileToggle = document.getElementById('mobileNavToggle');
-                const navControls = document.getElementById('navControls');
-
-                // Mobile navigation
-                mobileToggle.addEventListener('click', () => {
-                    navControls.classList.toggle('active');
-                    mobileToggle.classList.toggle('active');
-                });
-
-                // Smooth scrolling
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', (e) => {
                         e.preventDefault();
@@ -2006,50 +2143,53 @@
                         const target = document.querySelector(targetId);
                         
                         if (target) {
-                            const headerHeight = navBridge.offsetHeight;
+                            const headerHeight = 80;
                             const targetPosition = target.offsetTop - headerHeight;
                             
                             window.scrollTo({
                                 top: targetPosition,
                                 behavior: 'smooth'
                             });
-                            
-                            // Close mobile menu
-                            navControls.classList.remove('active');
-                            mobileToggle.classList.remove('active');
                         }
                     });
                 });
             }
 
             // ===========================
-            // SCROLL EFFECTS
+            // SCROLL EFFECTS & PARALLAX
             // ===========================
             setupScrollEffects() {
-                const navBridge = document.getElementById('navBridge');
-                const hyperspaceProgress = document.getElementById('hyperspaceProgress');
+                const navHud = document.getElementById('navHud');
                 const returnToBridge = document.getElementById('returnToBridge');
+                const starsLayers = document.querySelectorAll('.stars-layer');
+                const celestialBodies = document.querySelector('.celestial-bodies');
 
                 window.addEventListener('scroll', () => {
                     const scrollTop = window.pageYOffset;
-                    const docHeight = document.body.scrollHeight - window.innerHeight;
-                    const scrollPercent = (scrollTop / docHeight) * 100;
 
-                    // Update progress bar
-                    hyperspaceProgress.style.width = scrollPercent + '%';
-
-                    // Update navigation
+                    // Navigation effects
                     if (scrollTop > 100) {
-                        navBridge.classList.add('active');
+                        navHud.classList.add('active');
                     } else {
-                        navBridge.classList.remove('active');
+                        navHud.classList.remove('active');
                     }
 
-                    // Show/hide return button
+                    // Return button
                     if (scrollTop > 500) {
                         returnToBridge.classList.add('visible');
                     } else {
                         returnToBridge.classList.remove('visible');
+                    }
+
+                    // Parallax effects
+                    const parallaxSpeed = scrollTop * 0.5;
+                    starsLayers.forEach((layer, index) => {
+                        const speed = (index + 1) * 0.2;
+                        layer.style.transform = `translateY(${parallaxSpeed * speed}px)`;
+                    });
+
+                    if (celestialBodies) {
+                        celestialBodies.style.transform = `translateY(${parallaxSpeed * 0.3}px)`;
                     }
                 });
 
@@ -2057,6 +2197,33 @@
                 returnToBridge.addEventListener('click', () => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
+            }
+
+            // ===========================
+            // SPACE ANIMATIONS
+            // ===========================
+            startSpaceAnimations() {
+                // Add dynamic shooting star animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes shootingStar {
+                        0% {
+                            opacity: 0;
+                            transform: translateX(0) translateY(0) scale(0);
+                        }
+                        10% {
+                            opacity: 1;
+                        }
+                        90% {
+                            opacity: 1;
+                        }
+                        100% {
+                            opacity: 0;
+                            transform: translateX(300px) translateY(150px) scale(1);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
             }
 
             // ===========================
@@ -2177,42 +2344,14 @@
                         });
                         soundControl.innerHTML = '<i class="fas fa-volume-up"></i>';
                         soundControl.classList.remove('muted');
-                        this.showNotification('Audio Systems', 'Ambient sounds activated');
+                        this.showNotification('Audio Systems', 'Deep space sounds activated');
                     } else {
                         ambientSound.pause();
                         soundControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
                         soundControl.classList.add('muted');
-                        this.showNotification('Audio Systems', 'Ambient sounds deactivated');
+                        this.showNotification('Audio Systems', 'Sound systems deactivated');
                     }
                 });
-            }
-
-            // ===========================
-            // NOTIFICATIONS
-            // ===========================
-            setupNotifications() {
-                // Notification setup is handled in showNotification method
-            }
-
-            showNotification(title, message) {
-                const notification = document.getElementById('systemNotification');
-                const titleEl = notification.querySelector('h4');
-                const messageEl = notification.querySelector('p');
-                
-                titleEl.textContent = title;
-                messageEl.textContent = message;
-                
-                notification.classList.add('show');
-                
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 3000);
-            }
-
-            showWelcomeNotification() {
-                setTimeout(() => {
-                    this.showNotification('Systems Online', 'Welcome aboard, Commander!');
-                }, 2000);
             }
 
             // ===========================
@@ -2236,22 +2375,44 @@
                     observer.observe(el);
                 });
             }
+
+            // ===========================
+            // NOTIFICATIONS
+            // ===========================
+            showNotification(title, message) {
+                const notification = document.getElementById('systemNotification');
+                const titleEl = notification.querySelector('h4');
+                const messageEl = notification.querySelector('p');
+                
+                titleEl.textContent = title;
+                messageEl.textContent = message;
+                
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+
+            showWelcomeNotification() {
+                setTimeout(() => {
+                    this.showNotification('Deep Space Systems Online', 'Welcome to the cosmic data universe, Commander!');
+                }, 2000);
+            }
         }
 
         // ===========================
-        // INITIALIZE SPACESHIP
+        // INITIALIZE DEEP SPACE SYSTEM
         // ===========================
         document.addEventListener('DOMContentLoaded', () => {
-            new SpaceshipPortfolio();
+            new DeepSpacePortfolio();
         });
 
         // ===========================
         // PERFORMANCE OPTIMIZATIONS
         // ===========================
-        
-        // Pause animations when tab is not visible
         document.addEventListener('visibilitychange', () => {
-            const animations = document.querySelectorAll('.particle, .hyperspace-line, .stars-field, .galaxy-layer');
+            const animations = document.querySelectorAll('.particle, .stars-layer, .nebula-layer, .sun, .planet, .moon');
             if (document.hidden) {
                 animations.forEach(el => {
                     el.style.animationPlayState = 'paused';
@@ -2266,9 +2427,8 @@
         // Reduce motion for accessibility
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             document.documentElement.style.setProperty('--transition-smooth', 'none');
-            document.documentElement.style.setProperty('--transition-bounce', 'none');
             
-            const animatedElements = document.querySelectorAll('.particle, .hyperspace-line, .stars-field, .galaxy-layer');
+            const animatedElements = document.querySelectorAll('.particle, .stars-layer, .nebula-layer, .sun, .planet, .moon');
             animatedElements.forEach(el => {
                 el.style.animation = 'none';
             });
@@ -2278,7 +2438,7 @@
         // EASTER EGGS & INTERACTIONS
         // ===========================
         
-        // Konami code easter egg
+        // Konami code easter egg for special space mode
         let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
         let konamiIndex = 0;
 
@@ -2287,9 +2447,23 @@
                 konamiIndex++;
                 if (konamiIndex === konamiCode.length) {
                     // Activate special space mode
-                    document.body.style.animation = 'gradient-shift 3s ease-in-out';
+                    const spaceUniverse = document.querySelector('.space-universe');
+                    spaceUniverse.style.animation = 'hyperspace 3s ease-in-out';
+                    
+                    // Add hyperspace animation
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes hyperspace {
+                            0% { filter: hue-rotate(0deg) brightness(1); }
+                            50% { filter: hue-rotate(180deg) brightness(1.5); }
+                            100% { filter: hue-rotate(360deg) brightness(1); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
                     setTimeout(() => {
-                        document.body.style.animation = '';
+                        spaceUniverse.style.animation = '';
+                        style.remove();
                     }, 3000);
                     
                     // Show special notification
@@ -2297,8 +2471,8 @@
                     const titleEl = notification.querySelector('h4');
                     const messageEl = notification.querySelector('p');
                     
-                    titleEl.textContent = 'Secret Protocol Activated!';
-                    messageEl.textContent = 'Welcome to the hidden galaxy, Commander!';
+                    titleEl.textContent = 'Hyperspace Jump Activated!';
+                    messageEl.textContent = 'Welcome to the secret dimension, Space Commander!';
                     notification.classList.add('show');
                     
                     setTimeout(() => {
@@ -2312,22 +2486,158 @@
             }
         });
 
+        // Double-click on planets for special effects
+        document.querySelectorAll('.planet').forEach(planet => {
+            planet.addEventListener('dblclick', () => {
+                planet.style.animation = 'planetExplode 2s ease-out forwards';
+                
+                const explodeStyle = document.createElement('style');
+                explodeStyle.textContent = `
+                    @keyframes planetExplode {
+                        0% { transform: scale(1); filter: brightness(1); }
+                        50% { transform: scale(1.5); filter: brightness(3); }
+                        100% { transform: scale(0.8); filter: brightness(1); }
+                    }
+                `;
+                document.head.appendChild(explodeStyle);
+                
+                setTimeout(() => {
+                    planet.style.animation = '';
+                    explodeStyle.remove();
+                }, 2000);
+            });
+        });
+
         // ===========================
         // ERROR HANDLING
         // ===========================
         window.addEventListener('error', (e) => {
-            console.error('Spaceship system error:', e.error);
+            console.error('Deep space system error:', e.error);
         });
 
         // ===========================
         // CONSOLE MESSAGES
         // ===========================
-        console.log('🚀 Spaceship Portfolio Systems Online!');
-        console.log('🌌 Welcome to Commander Mohamed Suliman\'s Data Galaxy!');
-        console.log('🛸 Navigate through the sections to explore different ship modules');
-        console.log('🎮 Try the Konami code (↑↑↓↓←→←→BA) for a cosmic surprise!');
-        console.log('🔊 Click the sound control to enable ambient space sounds');
-        console.log('⭐ Enjoy your journey through the data universe!');
+        console.log('🚀 Deep Space Portfolio Systems Online!');
+        console.log('🌌 Welcome to Commander Mohamed Suliman\'s Cosmic Data Universe!');
+        console.log('🛸 Navigate through space sections to explore different ship modules');
+        console.log('🎮 Try the Konami code (↑↑↓↓←→←→BA) for a hyperspace surprise!');
+        console.log('🔊 Click the sound control to enable immersive space sounds');
+        console.log('🪐 Double-click on planets for special effects!');
+        console.log('⭐ Watch for shooting stars and spaceships crossing your view!');
+        console.log('🌟 Enjoy your journey through the infinite data cosmos!');
+
+        // ===========================
+        // ADDITIONAL SPACE INTERACTIONS
+        // ===========================
+        
+        // Click on sun for day/night cycle simulation
+        document.querySelector('.sun').addEventListener('click', () => {
+            const universe = document.querySelector('.space-universe');
+            universe.style.transition = 'filter 2s ease';
+            universe.style.filter = 'brightness(1.5) contrast(1.2)';
+            
+            setTimeout(() => {
+                universe.style.filter = '';
+                setTimeout(() => {
+                    universe.style.transition = '';
+                }, 100);
+            }, 3000);
+        });
+
+        // Hover effects for celestial bodies
+        document.querySelectorAll('.planet, .moon').forEach(body => {
+            body.addEventListener('mouseenter', () => {
+                body.style.filter = 'brightness(1.3) saturate(1.2)';
+                body.style.transform = body.style.transform + ' scale(1.1)';
+            });
+            
+            body.addEventListener('mouseleave', () => {
+                body.style.filter = '';
+                body.style.transform = body.style.transform.replace(' scale(1.1)', '');
+            });
+        });
+
+        // ===========================
+        // DYNAMIC CONTENT LOADING
+        // ===========================
+        
+        // Simulate loading different space sectors
+        function loadSpaceSector(sectorName) {
+            const notification = document.getElementById('systemNotification');
+            const titleEl = notification.querySelector('h4');
+            const messageEl = notification.querySelector('p');
+            
+            titleEl.textContent = 'Sector Change';
+            messageEl.textContent = `Entering ${sectorName} sector...`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        // Add sector change notifications when scrolling to different sections
+        const sections = document.querySelectorAll('section');
+        const sectorObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    let sectorName = '';
+                    
+                    switch(sectionId) {
+                        case 'bridge':
+                            sectorName = 'Command Bridge';
+                            break;
+                        case 'about':
+                            sectorName = 'Personal Quarters';
+                            break;
+                        case 'systems':
+                            sectorName = 'Engineering Bay';
+                            break;
+                        case 'missions':
+                            sectorName = 'Mission Archive';
+                            break;
+                        case 'communications':
+                            sectorName = 'Communication Hub';
+                            break;
+                    }
+                    
+                    if (sectorName) {
+                        setTimeout(() => loadSpaceSector(sectorName), 500);
+                    }
+                }
+            });
+        }, { threshold: 0.6 });
+
+        sections.forEach(section => {
+            sectorObserver.observe(section);
+        });
+
+        // ===========================
+        // FINAL INITIALIZATION
+        // ===========================
+        
+        // Ensure all space elements are properly initialized
+        setTimeout(() => {
+            // Add final touches to the space environment
+            const spaceUniverse = document.querySelector('.space-universe');
+            spaceUniverse.style.opacity = '1';
+            
+            // Start ambient particle effects
+            setInterval(() => {
+                if (Math.random() < 0.1) {
+                    const randomParticle = document.querySelector('.particle');
+                    if (randomParticle) {
+                        randomParticle.style.filter = 'brightness(2) saturate(2)';
+                        setTimeout(() => {
+                            randomParticle.style.filter = '';
+                        }, 500);
+                    }
+                }
+            }, 2000);
+            
+        }, 1000);
     </script>
 </body>
 </html>
