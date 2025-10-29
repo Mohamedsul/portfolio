@@ -3,30 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commander Mohamed Suliman - Space Explorer | Data Universe Navigator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Mohamed Suliman - AI & Data Analytics Professional. Expert in machine learning, data engineering, and business intelligence solutions.">
+    <meta name="keywords" content="AI, Data Analytics, Machine Learning, Data Science, Business Intelligence">
+    <meta name="author" content="Mohamed Suliman">
+    <title>Mohamed Suliman | AI & Data Analytics Professional</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary-cyan: #00ffff;
-            --primary-blue: #0066ff;
-            --accent-purple: #8b5cf6;
-            --accent-pink: #f471b5;
-            --warning-orange: #fb923c;
-            --success-green: #10b981;
-            --space-black: #000000;
-            --space-dark: #0a0a15;
-            --space-medium: #1a1a2e;
-            --space-light: #16213e;
-            --glass-light: rgba(255, 255, 255, 0.03);
-            --glass-medium: rgba(255, 255, 255, 0.06);
-            --glass-heavy: rgba(255, 255, 255, 0.1);
-            --text-primary: #ffffff;
-            --text-secondary: #b3b3b3;
-            --text-muted: #6b7280;
-            --border-glow: rgba(0, 255, 255, 0.2);
-            --shadow-glow: 0 0 30px rgba(0, 255, 255, 0.1);
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Professional Dark Mode Colors */
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #1f2937;
+            --bg-elevated: #212830;
+            --bg-card: #1a1f2e;
+            
+            /* Accent Colors */
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-tertiary: #06b6d4;
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-error: #ef4444;
+            
+            /* Text Colors */
+            --text-primary: #e6edf3;
+            --text-secondary: #9198a1;
+            --text-muted: #656d76;
+            --text-dim: #484f58;
+            
+            /* Border Colors */
+            --border-primary: #30363d;
+            --border-secondary: #21262d;
+            --border-accent: rgba(59, 130, 246, 0.3);
+            
+            /* Glow Effects */
+            --glow-primary: rgba(59, 130, 246, 0.2);
+            --glow-secondary: rgba(139, 92, 246, 0.2);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+            
+            /* Transitions */
+            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -35,1373 +63,1116 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Exo 2', sans-serif;
-            background: var(--space-black);
-            color: var(--text-primary);
-            overflow-x: hidden;
+        html {
             scroll-behavior: smooth;
-            cursor: none;
-            position: relative;
         }
 
-        /* ===========================
-           IMMERSIVE SPACE ENVIRONMENT
-        =========================== */
-        .space-universe {
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Animated Grid Background */
+        .grid-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -10;
-            background: radial-gradient(ellipse at center, #0a0a15 0%, #050510 50%, #000000 100%);
-            overflow: hidden;
-        }
-
-        /* Deep Space Stars - Multiple Layers */
-        .stars-layer {
-            position: absolute;
-            width: 200%;
-            height: 200%;
             background-image: 
-                radial-gradient(1px 1px at 20% 30%, #ffffff, transparent),
-                radial-gradient(1px 1px at 40% 70%, #00ffff, transparent),
-                radial-gradient(1px 1px at 60% 40%, #ffffff, transparent),
-                radial-gradient(1px 1px at 80% 20%, #8b5cf6, transparent),
-                radial-gradient(1px 1px at 10% 90%, #ffffff, transparent),
-                radial-gradient(2px 2px at 90% 80%, #f471b5, transparent),
-                radial-gradient(1px 1px at 30% 10%, #ffffff, transparent),
-                radial-gradient(1px 1px at 70% 90%, #00ffff, transparent);
-            background-repeat: repeat;
-            background-size: 150px 150px, 200px 200px, 180px 180px, 220px 220px, 160px 160px, 190px 190px, 170px 170px, 210px 210px;
+                linear-gradient(var(--border-secondary) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-secondary) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.2;
+            z-index: -2;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
         }
 
-        .stars-far {
-            animation: starsDrift 300s linear infinite;
-            opacity: 0.3;
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
 
-        .stars-medium {
-            animation: starsDrift 200s linear infinite reverse;
-            opacity: 0.6;
-        }
-
-        .stars-near {
-            animation: starsDrift 120s linear infinite;
-            opacity: 0.9;
-        }
-
-        @keyframes starsDrift {
-            0% { transform: translateX(0) translateY(0) rotate(0deg); }
-            100% { transform: translateX(-100px) translateY(-100px) rotate(360deg); }
-        }
-
-        /* Nebula Clouds */
-        .nebula-layer {
-            position: absolute;
+        /* Gradient Overlay */
+        .gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(ellipse 800px 300px at 20% 10%, rgba(139, 92, 246, 0.05) 0%, transparent 70%),
-                radial-gradient(ellipse 600px 400px at 80% 80%, rgba(0, 255, 255, 0.03) 0%, transparent 70%),
-                radial-gradient(ellipse 700px 200px at 60% 40%, rgba(244, 113, 181, 0.04) 0%, transparent 70%),
-                radial-gradient(ellipse 500px 500px at 10% 70%, rgba(16, 185, 129, 0.02) 0%, transparent 70%);
-            animation: nebulaFloat 400s ease-in-out infinite alternate;
-        }
-
-        @keyframes nebulaFloat {
-            0% { transform: translateX(-50px) rotate(0deg); }
-            100% { transform: translateX(50px) rotate(5deg); }
-        }
-
-        /* Planets and Celestial Bodies */
-        .celestial-bodies {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .sun {
-            position: absolute;
-            top: 15%;
-            right: 10%;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, #ffaa00 0%, #ff6600 40%, transparent 70%);
-            border-radius: 50%;
-            box-shadow: 0 0 100px rgba(255, 170, 0, 0.3), 0 0 200px rgba(255, 102, 0, 0.1);
-            animation: sunPulse 8s ease-in-out infinite, slowOrbit 800s linear infinite;
-        }
-
-        @keyframes sunPulse {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-
-        @keyframes slowOrbit {
-            0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
-            100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
-        }
-
-        .planet {
-            position: absolute;
-            border-radius: 50%;
-            animation: planetFloat 60s ease-in-out infinite alternate;
-        }
-
-        .planet-1 {
-            top: 25%;
-            left: 15%;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle at 30% 30%, #4338ca, #1e1b4b);
-            box-shadow: 0 0 40px rgba(67, 56, 202, 0.2);
-            animation-duration: 45s;
-        }
-
-        .planet-2 {
-            top: 60%;
-            right: 20%;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle at 30% 30%, #dc2626, #7f1d1d);
-            box-shadow: 0 0 30px rgba(220, 38, 38, 0.2);
-            animation-duration: 70s;
-        }
-
-        .planet-3 {
-            top: 80%;
-            left: 25%;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle at 30% 30%, #059669, #064e3b);
-            box-shadow: 0 0 25px rgba(5, 150, 105, 0.2);
-            animation-duration: 55s;
-        }
-
-        @keyframes planetFloat {
-            0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) translateX(10px) rotate(180deg); }
-            100% { transform: translateY(0px) translateX(0px) rotate(360deg); }
-        }
-
-        .moon {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle at 30% 30%, #f3f4f6, #9ca3af);
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(243, 244, 246, 0.1);
-        }
-
-        .moon-1 {
-            top: 40%;
-            left: 70%;
-            animation: moonOrbit 30s linear infinite;
-        }
-
-        .moon-2 {
-            top: 70%;
-            right: 40%;
-            animation: moonOrbit 40s linear infinite reverse;
-        }
-
-        @keyframes moonOrbit {
-            0% { transform: rotate(0deg) translateX(30px) rotate(0deg); }
-            100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
-        }
-
-        /* Shooting Stars */
-        .shooting-stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .shooting-star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: linear-gradient(45deg, #ffffff, transparent);
-            border-radius: 50%;
-            opacity: 0;
-        }
-
-        .shooting-star::before {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
-            transform: translateX(-100px);
-        }
-
-        /* Spaceships */
-        .spaceship-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+                radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at top right, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+            z-index: -1;
             pointer-events: none;
         }
 
-        .spaceship {
-            position: absolute;
-            width: 40px;
-            height: 20px;
-            opacity: 0;
-            z-index: 1;
-        }
-
-        .spaceship::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-bottom: 8px solid #00ffff;
-            transform: rotate(45deg);
-        }
-
-        .spaceship::after {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 15px;
-            width: 10px;
-            height: 4px;
-            background: #ffffff;
-            border-radius: 2px;
-        }
-
-        /* Floating Particles */
-        .space-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--primary-cyan);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 20s linear infinite;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) translateX(0) scale(0);
-                opacity: 0;
-            }
-            5% {
-                opacity: 0.8;
-            }
-            95% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100px) translateX(200px) scale(1);
-                opacity: 0;
-            }
-        }
-
-        /* ===========================
-           CUSTOM CURSOR
-        =========================== */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, var(--primary-cyan), transparent);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: screen;
-            transition: transform 0.1s ease;
-        }
-
-        .cursor::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--primary-cyan);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: cursorPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes cursorPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.1; }
-        }
-
-        /* ===========================
-           SPACESHIP UI FRAMEWORK
-        =========================== */
-        .ui-panel {
-            background: var(--glass-medium);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
-            border-radius: 12px;
-            box-shadow: var(--shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ui-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
-            animation: scanLine 4s ease-in-out infinite;
-        }
-
-        @keyframes scanLine {
-            0% { left: -100%; }
-            50% { left: 100%; }
-            100% { left: 100%; }
-        }
-
-        .hologram-text {
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple), var(--primary-cyan));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: hologramShimmer 4s ease-in-out infinite;
-            text-shadow: 0 0 20px var(--primary-cyan);
-        }
-
-        @keyframes hologramShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* ===========================
-           NAVIGATION HUD
-        =========================== */
-        .nav-hud {
+        /* ==================== NAVIGATION ==================== */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid var(--border-primary);
+            padding: 1rem 2rem;
             z-index: 1000;
-            background: rgba(10, 10, 21, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-glow);
-            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
         }
 
-        .nav-hud.active {
-            background: rgba(10, 10, 21, 0.95);
-            box-shadow: 0 5px 30px rgba(0, 255, 255, 0.1);
+        nav.scrolled {
+            background: rgba(13, 17, 23, 0.95);
+            padding: 0.75rem 2rem;
+            box-shadow: var(--shadow-lg);
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .command-logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-base);
+        }
+
+        .logo:hover {
+            color: var(--accent-primary);
+        }
+
+        .logo i {
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-base);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent-primary);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            padding: 12rem 2rem 8rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 5rem;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-accent);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            box-shadow: 0 0 20px var(--glow-primary);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: scale(0.9);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 50%, var(--accent-secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            position: relative;
-            cursor: pointer;
-            transition: var(--transition-smooth);
+            letter-spacing: -0.02em;
         }
 
-        .command-logo::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .command-logo:hover::after {
-            transform: scaleX(1);
-        }
-
-        .nav-controls {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-control a {
+        .hero .subtitle {
+            font-size: 1.75rem;
             color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            border: 1px solid transparent;
-            transition: var(--transition-smooth);
-            font-family: 'Orbitron', monospace;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-control a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .nav-control a:hover::before {
-            left: 100%;
-        }
-
-        .nav-control a:hover {
-            color: var(--primary-cyan);
-            border-color: var(--border-glow);
-            background: var(--glass-light);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-            text-shadow: 0 0 10px var(--primary-cyan);
-        }
-
-        /* ===========================
-           COMMAND BRIDGE (HERO)
-        =========================== */
-        .command-bridge {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 2rem;
-        }
-
-        .command-center {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-        }
-
-        .commander-avatar {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
-            position: relative;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
-            padding: 4px;
-            animation: avatarFloat 6s ease-in-out infinite;
-        }
-
-        @keyframes avatarFloat {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg);
-                box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); 
-            }
-            50% { 
-                transform: translateY(-10px) rotate(1deg);
-                box-shadow: 0 0 50px rgba(139, 92, 246, 0.3); 
-            }
-        }
-
-        .commander-avatar img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .avatar-placeholder {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: var(--space-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--primary-cyan);
-            font-weight: 800;
-            font-family: 'Orbitron', monospace;
-        }
-
-        .commander-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            animation: titleGlow 4s ease-in-out infinite;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { 
-                text-shadow: 0 0 20px var(--primary-cyan), 0 0 40px var(--primary-cyan);
-            }
-            50% { 
-                text-shadow: 0 0 30px var(--accent-purple), 0 0 60px var(--accent-purple);
-            }
-        }
-
-        .status-display {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-weight: 500;
         }
 
-        .mission-status {
-            display: inline-block;
-            color: var(--primary-cyan);
-            font-weight: 600;
-            border-right: 2px solid var(--primary-cyan);
-            animation: typingCursor 1.5s infinite;
-            text-shadow: 0 0 10px var(--primary-cyan);
+        .hero .description {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 600px;
         }
 
-        @keyframes typingCursor {
-            0%, 50% { border-color: var(--primary-cyan); }
-            51%, 100% { border-color: transparent; }
-        }
-
-        .command-actions {
+        .hero-cta {
             display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 3rem;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
-        .action-btn {
-            padding: 1rem 2.5rem;
-            background: var(--glass-medium);
-            border: 1px solid var(--border-glow);
-            border-radius: 50px;
-            color: var(--text-primary);
-            text-decoration: none;
+        /* Button Styles */
+        .btn {
+            padding: 1rem 2.25rem;
+            border-radius: 10px;
             font-weight: 600;
-            font-family: 'Orbitron', monospace;
-            transition: var(--transition-smooth);
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition-base);
+            border: none;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(20px);
         }
 
-        .action-btn::before {
+        .btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            box-shadow: 0 4px 20px var(--glow-primary);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 30px var(--glow-primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-primary);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Image Section */
+        .hero-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInRight 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 450px;
+            height: 450px;
+        }
+
+        .hero-image {
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
-            transition: left 0.6s ease;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 3px solid var(--border-primary);
+            box-shadow: var(--shadow-xl);
+            transition: var(--transition-slow);
+            background: var(--bg-secondary);
         }
 
-        .action-btn:hover::before {
-            left: 100%;
+        .hero-image:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 40px var(--glow-primary);
+            transform: scale(1.02) rotate(1deg);
         }
 
-        .action-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
-            border-color: var(--primary-cyan);
-            color: var(--primary-cyan);
-            text-shadow: 0 0 10px var(--primary-cyan);
-        }
-
-        .action-btn.primary {
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
-            color: var(--space-black);
-            border-color: transparent;
-        }
-
-        .action-btn.primary:hover {
-            color: var(--space-black);
-            text-shadow: none;
-        }
-
-        /* ===========================
-           SHIP STATISTICS
-        =========================== */
-        .ship-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 5rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .stat-module {
-            background: var(--glass-light);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-        }
-
-        .stat-module::before {
+        /* Decorative elements around photo */
+        .hero-image-wrapper::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0.15;
+            animation: rotate 20s linear infinite;
         }
 
-        .stat-module:hover::before {
-            transform: scaleX(1);
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .stat-module:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.1);
-            border-color: var(--primary-cyan);
+        .hero-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
+            border: 2px dashed var(--border-accent);
+            border-radius: 24px;
+            z-index: -2;
+            animation: rotateDash 15s linear infinite reverse;
         }
 
-        .stat-value {
-            font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-cyan);
-            display: block;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 15px var(--primary-cyan);
+        @keyframes rotateDash {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .stat-label {
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* Floating particles around image */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
         }
 
-        /* ===========================
-           SECTION FRAMEWORK
-        =========================== */
-        .ship-section {
-            padding: 100px 0;
-            position: relative;
+        .particle:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
         }
 
-        .section-container {
+        .particle:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 0.5s;
+        }
+
+        .particle:nth-child(3) {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(4) {
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ==================== STATS SECTION ==================== */
+        .stats {
+            padding: 6rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* ===========================
-           SYSTEMS GRID
-        =========================== */
-        .systems-grid {
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
-        .system-module {
-            background: var(--glass-medium);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
             border-radius: 16px;
             padding: 2.5rem;
+            transition: var(--transition-base);
             position: relative;
             overflow: hidden;
-            transition: var(--transition-smooth);
         }
 
-        .system-module::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .system-module:hover::before {
-            transform: scaleX(1);
-        }
-
-        .system-module:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.1);
-            border-color: var(--primary-cyan);
-        }
-
-        .system-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .system-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--space-black);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-        }
-
-        .system-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-cyan);
-            text-shadow: 0 0 10px var(--primary-cyan);
-        }
-
-        .system-components {
-            list-style: none;
-        }
-
-        .system-components li {
-            padding: 0.8rem 0;
-            color: var(--text-secondary);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-            transition: var(--transition-smooth);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-weight: 500;
-        }
-
-        .system-components li:last-child {
-            border-bottom: none;
-        }
-
-        .system-components li::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--primary-cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary-cyan);
-            animation: componentPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes componentPulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .system-components li:hover {
-            color: var(--primary-cyan);
-            transform: translateX(10px);
-            text-shadow: 0 0 10px var(--primary-cyan);
-        }
-
-        /* ===========================
-           MISSION ARCHIVE
-        =========================== */
-        .mission-filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.8rem 1.5rem;
-            background: var(--glass-light);
-            border: 1px solid var(--border-glow);
-            border-radius: 25px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            font-weight: 500;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.9rem;
-            backdrop-filter: blur(20px);
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
-            color: var(--space-black);
-            border-color: transparent;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-            text-shadow: none;
-        }
-
-        .missions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-
-        .mission-card {
-            background: var(--glass-medium);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
-            border-radius: 16px;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .mission-card.hidden {
-            opacity: 0;
-            transform: scale(0.8);
-            pointer-events: none;
-        }
-
-        .mission-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple));
-        }
-
-        .mission-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.1);
-            border-color: var(--primary-cyan);
-        }
-
-        .mission-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
-        .mission-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-cyan);
-            text-shadow: 0 0 10px var(--primary-cyan);
-            flex: 1;
-        }
-
-        .mission-status {
-            background: linear-gradient(45deg, var(--success-green), var(--primary-cyan));
-            color: var(--space-black);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-family: 'Orbitron', monospace;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
-        }
-
-        .mission-status.featured {
-            background: linear-gradient(45deg, var(--warning-orange), var(--accent-pink));
-            box-shadow: 0 0 15px rgba(251, 146, 60, 0.2);
-        }
-
-        .mission-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .mission-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .tech-tag {
-            background: rgba(0, 255, 255, 0.1);
-            color: var(--primary-cyan);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            transition: var(--transition-smooth);
-            backdrop-filter: blur(10px);
-            font-family: 'Orbitron', monospace;
-        }
-
-        .tech-tag:hover {
-            background: var(--primary-cyan);
-            color: var(--space-black);
-            box-shadow: 0 0 15px var(--primary-cyan);
-        }
-
-        .mission-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .mission-link {
-            flex: 1;
-            padding: 0.8rem 1.5rem;
-            background: var(--glass-light);
-            border: 1px solid var(--border-glow);
-            border-radius: 25px;
-            color: var(--primary-cyan);
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            transition: var(--transition-smooth);
-            font-family: 'Orbitron', monospace;
-            backdrop-filter: blur(10px);
-        }
-
-        .mission-link:hover {
-            background: var(--primary-cyan);
-            color: var(--space-black);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
-            text-shadow: none;
-        }
-
-        /* ===========================
-           COMMUNICATION HUB
-        =========================== */
-        .comm-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .comm-channel {
-            background: var(--glass-medium);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-        }
-
-        .comm-channel::before {
+        .stat-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple));
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
 
-        .comm-channel:hover::before {
+        .stat-card:hover::before {
             transform: scaleX(1);
         }
 
-        .comm-channel:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.1);
-            border-color: var(--primary-cyan);
+        .stat-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 30px var(--glow-primary);
+            transform: translateY(-5px);
         }
 
-        .comm-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: var(--space-black);
-            transition: var(--transition-smooth);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-        }
-
-        .comm-channel:hover .comm-icon {
-            transform: scale(1.1) rotate(360deg);
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
-        }
-
-        .comm-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary-cyan);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px var(--primary-cyan);
-        }
-
-        .comm-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: var(--transition-smooth);
-        }
-
-        .comm-link:hover {
-            color: var(--primary-cyan);
-            text-shadow: 0 0 10px var(--primary-cyan);
-        }
-
-        /* ===========================
-           CONTROL PANELS
-        =========================== */
-        .sound-control {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
+        .stat-icon {
             width: 60px;
             height: 60px;
-            background: var(--glass-medium);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            z-index: 1000;
-            color: var(--primary-cyan);
-            font-size: 1.5rem;
-        }
-
-        .sound-control:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
-        }
-
-        .sound-control.muted {
-            color: var(--text-muted);
-            border-color: var(--text-muted);
-        }
-
-        .return-to-bridge {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition-smooth);
-            z-index: 1000;
-            color: var(--space-black);
-            font-size: 1.5rem;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-        }
-
-        .return-to-bridge.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .return-to-bridge:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.3);
-        }
-
-        /* ===========================
-           SYSTEM NOTIFICATIONS
-        =========================== */
-        .system-notification {
-            position: fixed;
-            top: 120px;
-            right: -450px;
-            background: var(--glass-medium);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             border-radius: 12px;
-            padding: 1.5rem;
-            max-width: 400px;
-            transition: var(--transition-smooth);
-            z-index: 1001;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .system-notification.show {
-            right: 30px;
-        }
-
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .notification-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--primary-cyan), var(--accent-purple));
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--space-black);
-            font-size: 1.2rem;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-base);
         }
 
-        .notification-text h4 {
-            color: var(--primary-cyan);
-            font-family: 'Orbitron', monospace;
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 0 10px var(--primary-cyan);
+        .stat-card:hover .stat-icon {
+            transform: rotateY(180deg);
         }
 
-        .notification-text p {
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
             color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* ==================== CONTENT SECTIONS ==================== */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin-bottom: 5rem;
+            text-align: left;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-accent);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-label i {
             font-size: 0.9rem;
         }
 
-        /* ===========================
-           LOADING ANIMATION
-        =========================== */
-        .loading-screen {
-            position: fixed;
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ==================== SKILLS SECTION ==================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--space-black);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-category:hover::before {
+            opacity: 0.05;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 30px var(--glow-primary);
+            transform: translateY(-5px);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10000;
-            opacity: 1;
-            transition: opacity 1s ease-out;
+            font-size: 1.5rem;
+            transition: var(--transition-base);
         }
 
-        .loading-screen.hidden {
+        .skill-category:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .skill-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-tag {
+            padding: 0.625rem 1.125rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition-base);
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        /* ==================== PROJECTS SECTION ==================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition-base);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 35px var(--glow-primary);
+            transform: translateY(-8px);
+        }
+
+        .project-header {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-elevated));
+            border-bottom: 1px solid var(--border-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
             opacity: 0;
-            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
-        .loading-content {
-            text-align: center;
-            color: var(--primary-cyan);
+        .project-card:hover .project-header::before {
+            opacity: 0.1;
         }
 
-        .loading-spinner {
+        .project-title {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-body {
+            padding: 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.625rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            padding: 0.375rem 0.875rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 6px;
+            font-size: 0.8125rem;
+            color: var(--accent-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            transition: var(--transition-base);
+        }
+
+        .tech-tag:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            transition: var(--transition-base);
+            flex: 1;
+            justify-content: center;
+        }
+
+        .project-link:hover {
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-methods {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: var(--transition-base);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-method::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-method:hover::before {
+            opacity: 0.05;
+        }
+
+        .contact-method:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 30px var(--glow-primary);
+            transform: translateX(8px);
+        }
+
+        .contact-icon {
             width: 60px;
             height: 60px;
-            border: 3px solid rgba(0, 255, 255, 0.1);
-            border-top: 3px solid var(--primary-cyan);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-base);
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .contact-method:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
-        .loading-text {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-shadow: 0 0 10px var(--primary-cyan);
+        .contact-info {
+            position: relative;
+            z-index: 1;
         }
 
-        /* ===========================
-           RESPONSIVE DESIGN
-        =========================== */
+        .contact-info h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 0.375rem;
+            font-weight: 700;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-primary);
+            padding: 4rem 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .signature {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .signature-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .signature-subtitle {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .footer-right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: var(--transition-base);
+        }
+
+        .social-link:hover {
+            background: var(--bg-elevated);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px var(--glow-primary);
+        }
+
+        /* ==================== SCROLL TO TOP ==================== */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px var(--glow-primary);
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
         @media (max-width: 1024px) {
-            .commander-title {
-                font-size: 2.8rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .systems-grid,
-            .missions-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                padding: 10rem 2rem 6rem;
             }
 
-            .sun {
-                width: 80px;
-                height: 80px;
+            .hero-image-wrapper {
+                width: 350px;
+                height: 350px;
             }
 
-            .planet-1 {
-                width: 60px;
-                height: 60px;
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
-            .planet-2 {
-                width: 45px;
-                height: 45px;
-            }
-
-            .planet-3 {
-                width: 30px;
-                height: 30px;
+            .footer-right {
+                justify-content: flex-start;
             }
         }
 
         @media (max-width: 768px) {
-            .nav-controls {
-                display: none;
+            nav {
+                padding: 1rem 1.5rem;
             }
-            
-            .commander-title {
-                font-size: 2.2rem;
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(13, 17, 23, 0.98);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem;
+                border-bottom: 1px solid var(--border-primary);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition-base);
             }
-            
-            .section-title {
-                font-size: 2rem;
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
             }
-            
-            .command-actions {
+
+            .nav-links a {
+                padding: 1rem 0;
+                width: 100%;
+                border-bottom: 1px solid var(--border-secondary);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 8rem 1.5rem 4rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                display: flex;
                 flex-direction: column;
                 align-items: center;
             }
-            
-            .ship-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .systems-grid,
-            .missions-grid,
-            .comm-grid {
-                grid-template-columns: 1fr;
+
+            .hero-image-wrapper {
+                width: 280px;
+                height: 280px;
             }
 
-            .sun {
-                width: 60px;
-                height: 60px;
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            .planet {
-                transform: scale(0.8);
+            .hero .subtitle {
+                font-size: 1.375rem;
             }
-        }
 
-        @media (max-width: 480px) {
-            .commander-title {
-                font-size: 1.8rem;
+            .hero .description {
+                font-size: 1rem;
             }
-            
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
             .section-title {
-                font-size: 1.6rem;
+                font-size: 2rem;
             }
-            
-            .ship-stats,
-            .comm-grid {
+
+            .section-header {
+                text-align: center;
+            }
+
+            .stats-grid,
+            .skills-grid,
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .commander-avatar {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .status-display {
-                font-size: 1.1rem;
-            }
-            
-            .section-container {
-                padding: 0 1rem;
+
+            .signature-text {
+                font-size: 2rem;
             }
 
-            .celestial-bodies {
-                transform: scale(0.7);
+            .scroll-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
             }
         }
 
-        /* ===========================
-           ACCESSIBILITY
-        =========================== */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* ===========================
-           UTILITY CLASSES
-        =========================== */
+        /* ==================== ANIMATIONS ==================== */
         .fade-in {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .fade-in.visible {
@@ -1409,1235 +1180,704 @@
             transform: translateY(0);
         }
 
-        .hidden {
-            display: none !important;
+        /* ==================== LOADING ANIMATION ==================== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-primary);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">Initializing Deep Space Systems...</div>
-        </div>
+        <div class="loader"></div>
     </div>
 
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
+    <!-- Animated Background -->
+    <div class="grid-background"></div>
+    <div class="gradient-overlay"></div>
 
-    <!-- Immersive Space Universe -->
-    <div class="space-universe">
-        <!-- Multiple Star Layers for Parallax -->
-        <div class="stars-layer stars-far"></div>
-        <div class="stars-layer stars-medium"></div>
-        <div class="stars-layer stars-near"></div>
-        
-        <!-- Nebula Clouds -->
-        <div class="nebula-layer"></div>
-        
-        <!-- Celestial Bodies -->
-        <div class="celestial-bodies">
-            <div class="sun"></div>
-            <div class="planet planet-1"></div>
-            <div class="planet planet-2"></div>
-            <div class="planet planet-3"></div>
-            <div class="moon moon-1"></div>
-            <div class="moon moon-2"></div>
-        </div>
-        
-        <!-- Shooting Stars -->
-        <div class="shooting-stars" id="shootingStars"></div>
-        
-        <!-- Spaceships -->
-        <div class="spaceship-container" id="spaceshipContainer"></div>
-        
-        <!-- Floating Particles -->
-        <div class="space-particles" id="spaceParticles"></div>
-    </div>
-
-    <!-- Navigation HUD -->
-    <nav class="nav-hud" id="navHud">
+    <!-- Navigation -->
+    <nav id="navbar">
         <div class="nav-container">
-            <div class="command-logo">MS-7</div>
-            <ul class="nav-controls" id="navControls">
-                <li class="nav-control"><a href="#bridge"><i class="fas fa-rocket"></i> Bridge</a></li>
-                <li class="nav-control"><a href="#about"><i class="fas fa-user-astronaut"></i> Commander</a></li>
-                <li class="nav-control"><a href="#systems"><i class="fas fa-cogs"></i> Systems</a></li>
-                <li class="nav-control"><a href="#missions"><i class="fas fa-satellite"></i> Missions</a></li>
-                <li class="nav-control"><a href="#communications"><i class="fas fa-satellite-dish"></i> Comm</a></li>
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i>
+                <span>Mohamed Suliman</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Control Panels -->
-    <div class="sound-control" id="soundControl">
-        <i class="fas fa-volume-up"></i>
-    </div>
-
-    <div class="return-to-bridge" id="returnToBridge">
-        <i class="fas fa-rocket"></i>
-    </div>
-
-    <!-- System Notification -->
-    <div class="system-notification" id="systemNotification">
-        <div class="notification-content">
-            <div class="notification-icon">
-                <i class="fas fa-rocket"></i>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="status-dot"></span>
+                <span>Available for New Opportunities</span>
             </div>
-            <div class="notification-text">
-                <h4>System Online</h4>
-                <p>Welcome to deep space, Commander!</p>
+            <h1>Mohamed Suliman</h1>
+            <p class="subtitle">AI & Data Analytics Professional</p>
+            <p class="description">
+                Transforming complex data into actionable insights through advanced analytics, 
+                machine learning, and intelligent automation. Specialized in building scalable 
+                data pipelines and AI-driven solutions for business intelligence.
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i>
+                    <span>Get in Touch</span>
+                </a>
+                <a href="#projects" class="btn btn-secondary">
+                    <i class="fas fa-briefcase"></i>
+                    <span>View Projects</span>
+                </a>
             </div>
         </div>
-    </div>
+        
+        <div class="hero-image-container">
+            <div class="hero-image-wrapper">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <!-- Replace 'your-photo.jpg' with your actual photo path -->
+                <img src="your-photo.jpg" alt="Mohamed Suliman - AI & Data Analytics Professional" class="hero-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22450%22 height=%22450%22%3E%3Crect fill=%22%231a1f2e%22 width=%22450%22 height=%22450%22/%3E%3Ctext fill=%22%239198a1%22 font-family=%22Arial%22 font-size=%2224%22 text-anchor=%22middle%22 x=%22225%22 y=%22225%22%3EYour Photo Here%3C/text%3E%3Ctext fill=%22%23656d76%22 font-family=%22Arial%22 font-size=%2214%22 text-anchor=%22middle%22 x=%22225%22 y=%22250%22%3EReplace: your-photo.jpg%3C/text%3E%3C/svg%3E'">
+            </div>
+        </div>
+    </section>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Command Bridge Section -->
-        <section id="bridge" class="command-bridge">
-            <div class="command-center fade-in">
-                <div class="commander-avatar">
-                    <img src="assets/profile.jpg" alt="Commander Mohamed Suliman" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="avatar-placeholder" style="display: none;">MS</div>
+    <!-- Stats Section -->
+    <section class="stats fade-in">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-project-diagram"></i>
                 </div>
-                <h1 class="commander-title hologram-text">Commander Mohamed Suliman</h1>
-                <p class="status-display">Deep Space Data Explorer | <span class="mission-status" id="missionStatus">Navigating Data Galaxies</span></p>
-                <div class="command-actions">
-                    <a href="#missions" class="action-btn primary">
-                        <i class="fas fa-rocket"></i> Launch Missions
-                    </a>
-                    <a href="#communications" class="action-btn">
-                        <i class="fas fa-satellite-dish"></i> Open Channel
-                    </a>
+                <div class="stat-value">50+</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="stat-value">10TB+</div>
+                <div class="stat-label">Data Processed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-value">5+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section fade-in">
+        <div class="section-header">
+            <span class="section-label">
+                <i class="fas fa-user"></i>
+                ABOUT ME
+            </span>
+            <h2 class="section-title">Bridging Data & Intelligence</h2>
+            <p class="section-description">
+                I'm a data analytics professional with a passion for leveraging AI and machine learning 
+                to solve complex business challenges. My expertise spans the entire data lifecycle—from 
+                collection and processing to analysis and visualization. I specialize in building 
+                automated systems that turn raw data into strategic business insights, helping organizations 
+                make data-driven decisions with confidence.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section fade-in">
+        <div class="section-header">
+            <span class="section-label">
+                <i class="fas fa-cogs"></i>
+                EXPERTISE
+            </span>
+            <h2 class="section-title">Technical Capabilities</h2>
+            <p class="section-description">
+                A comprehensive toolkit for modern data analytics and AI implementation across 
+                the full technology stack.
+            </p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="skill-title">AI & Machine Learning</h3>
+                </div>
+                <div class="skill-items">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">Neural Networks</span>
                 </div>
             </div>
-            
-            <div class="ship-stats fade-in">
-                <div class="stat-module">
-                    <span class="stat-value" data-count="3">0</span>
-                    <span class="stat-label">Years in Service</span>
+
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="skill-title">Data Engineering</h3>
                 </div>
-                <div class="stat-module">
-                    <span class="stat-value" data-count="60">0</span>
-                    <span class="stat-label">Missions Completed</span>
-                </div>
-                <div class="stat-module">
-                    <span class="stat-value" data-count="85">0</span>
-                    <span class="stat-label">Success Rate %</span>
-                </div>
-                <div class="stat-module">
-                    <span class="stat-value" data-count="200">0</span>
-                    <span class="stat-label">Dashboards Created</span>
-                </div>
-                <div class="stat-module">
-                    <span class="stat-value" data-count="150">0</span>
-                    <span class="stat-label">Credits Saved (K)</span>
-                </div>
-                <div class="stat-module">
-                    <span class="stat-value" data-count="5">0</span>
-                    <span class="stat-label">Galaxy Clusters</span>
+                <div class="skill-items">
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Apache Spark</span>
+                    <span class="skill-tag">ETL Pipelines</span>
+                    <span class="skill-tag">Data Warehousing</span>
+                    <span class="skill-tag">Big Data</span>
+                    <span class="skill-tag">Redis</span>
                 </div>
             </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about" class="ship-section">
-            <div class="section-container">
-                <div class="section-header fade-in">
-                    <h2 class="section-title hologram-text">Commander Profile</h2>
-                    <p class="section-subtitle">Meet the data explorer charting courses through the vast universe of Machine Learning and Analytics</p>
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="skill-title">Analytics & Visualization</h3>
                 </div>
-                
-                <div class="ui-panel fade-in" style="padding: 3rem; margin-bottom: 3rem;">
-                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
-                        Greetings from the depths of space! I'm <span style="color: var(--primary-cyan); font-weight: 600;">Commander Mohamed Suliman</span>, a seasoned data explorer navigating the infinite expanse of <span style="color: var(--primary-cyan); font-weight: 600;">Machine Learning</span> and <span style="color: var(--primary-cyan); font-weight: 600;">Advanced Analytics</span>. Armed with expertise in <span style="color: var(--primary-cyan); font-weight: 600;">Python</span>, <span style="color: var(--primary-cyan); font-weight: 600;">Power BI</span>, and <span style="color: var(--primary-cyan); font-weight: 600;">SQL</span>, I chart precise courses through complex data galaxies.
+                <div class="skill-items">
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Matplotlib</span>
+                    <span class="skill-tag">Seaborn</span>
+                    <span class="skill-tag">Plotly</span>
+                    <span class="skill-tag">Excel Advanced</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="skill-title">Cloud & DevOps</h3>
+                </div>
+                <div class="skill-items">
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Google Cloud</span>
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Terraform</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="skill-title">Automation & APIs</h3>
+                </div>
+                <div class="skill-items">
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Selenium</span>
+                    <span class="skill-tag">BeautifulSoup</span>
+                    <span class="skill-tag">Airflow</span>
+                    <span class="skill-tag">RPA</span>
+                    <span class="skill-tag">Webhooks</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-title">Programming Languages</h3>
+                </div>
+                <div class="skill-items">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Bash</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Go</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section fade-in">
+        <div class="section-header">
+            <span class="section-label">
+                <i class="fas fa-briefcase"></i>
+                PORTFOLIO
+            </span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-description">
+                A curated selection of data analytics and AI projects showcasing real-world 
+                applications and measurable business impact.
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Customer Churn Prediction</h3>
+                    <p class="project-subtitle">Machine Learning | Predictive Analytics</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Developed a machine learning model to predict customer churn with 92% accuracy, 
+                        helping reduce customer attrition by 35%. Implemented advanced feature engineering 
+                        and ensemble methods for optimal performance.
                     </p>
-                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);">
-                        My journey through the <span style="color: var(--primary-cyan); font-weight: 600;">Engineering cosmos</span> has equipped me with advanced navigation systems to transform raw data into powerful business intelligence. Like a skilled spaceship commander, I excel at solving complex interstellar problems and delivering data-driven solutions that propel organizations to new dimensions of the universe.
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">SHAP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Real-time Sales Dashboard</h3>
+                    <p class="project-subtitle">Business Intelligence | Data Visualization</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Created an interactive dashboard processing 1M+ transactions daily, providing 
+                        real-time insights into sales performance, inventory levels, and customer behavior 
+                        patterns with automated alerts.
                     </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Systems Section -->
-        <section id="systems" class="ship-section">
-            <div class="section-container">
-                <div class="section-header fade-in">
-                    <h2 class="section-title hologram-text">Ship Systems</h2>
-                    <p class="section-subtitle">Advanced technological systems powering our deep space data exploration missions</p>
-                </div>
-                
-                <div class="systems-grid">
-                    <div class="system-module fade-in ui-panel">
-                        <div class="system-header">
-                            <div class="system-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h3 class="system-title">AI Core Systems</h3>
-                        </div>
-                        <ul class="system-components">
-                            <li>Customer Segmentation (K-Means)</li>
-                            <li>Churn Prediction Algorithms</li>
-                            <li>Scikit-learn & Pandas</li>
-                            <li>Statistical Analysis Engine</li>
-                        </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">DAX</span>
+                        <span class="tech-tag">Azure</span>
+                        <span class="tech-tag">Python</span>
                     </div>
-                    
-                    <div class="system-module fade-in ui-panel">
-                        <div class="system-header">
-                            <div class="system-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3 class="system-title">Programming Matrix</h3>
-                        </div>
-                        <ul class="system-components">
-                            <li>Advanced Python Protocols</li>
-                            <li>SQL Database Management</li>
-                            <li>Data Processing & ETL</li>
-                            <li>Algorithm Development</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="system-module fade-in ui-panel">
-                        <div class="system-header">
-                            <div class="system-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h3 class="system-title">Visualization Array</h3>
-                        </div>
-                        <ul class="system-components">
-                            <li>Power BI Command Centers</li>
-                            <li>Tableau Analytics Interface</li>
-                            <li>Interactive Report Systems</li>
-                            <li>Advanced Excel Charts</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="system-module fade-in ui-panel">
-                        <div class="system-header">
-                            <div class="system-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <h3 class="system-title">Data Storage Matrix</h3>
-                        </div>
-                        <ul class="system-components">
-                            <li>PostgreSQL Systems</li>
-                            <li>MySQL Databases</li>
-                            <li>SQL Server Infrastructure</li>
-                            <li>Data Warehousing</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="system-module fade-in ui-panel">
-                        <div class="system-header">
-                            <div class="system-icon">
-                                <i class="fas fa-flask"></i>
-                            </div>
-                            <h3 class="system-title">Research Laboratory</h3>
-                        </div>
-                        <ul class="system-components">
-                            <li>A/B Testing Protocols</li>
-                            <li>Hypothesis Testing Engine</li>
-                            <li>Business Intelligence</li>
-                            <li>Predictive Analytics</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="system-module fade-in ui-panel">
-                        <div class="system-header">
-                            <div class="system-icon">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <h3 class="system-title">Engineering Bay</h3>
-                        </div>
-                        <ul class="system-components">
-                            <li>Data Cleaning Protocols</li>
-                            <li>ETL Pipeline Development</li>
-                            <li>Quality Assurance Systems</li>
-                            <li>Feature Engineering</li>
-                        </ul>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-file-alt"></i> Case Study
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> View
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Missions Section -->
-        <section id="missions" class="ship-section">
-            <div class="section-container">
-                <div class="section-header fade-in">
-                    <h2 class="section-title hologram-text">Mission Archives</h2>
-                    <p class="section-subtitle">Successful expeditions across the data universe and beyond</p>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">NLP Sentiment Analysis</h3>
+                    <p class="project-subtitle">Natural Language Processing | Deep Learning</p>
                 </div>
-                
-                <div class="mission-filters fade-in">
-                    <div class="filter-btn active" data-category="all">
-                        <i class="fas fa-rocket"></i> All Missions
+                <div class="project-body">
+                    <p class="project-description">
+                        Built a sentiment analysis system for social media monitoring, processing 
+                        100K+ posts daily with 89% accuracy using transformer-based models and 
+                        real-time sentiment scoring.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">BERT</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Docker</span>
                     </div>
-                    <div class="filter-btn" data-category="machine-learning">
-                        <i class="fas fa-brain"></i> AI Expeditions
-                    </div>
-                    <div class="filter-btn" data-category="dashboards">
-                        <i class="fas fa-satellite"></i> Command Centers
-                    </div>
-                    <div class="filter-btn" data-category="analytics">
-                        <i class="fas fa-flask"></i> Research Labs
-                    </div>
-                </div>
-
-                <div class="missions-grid">
-                    <!-- Featured ML Missions -->
-                    <div class="mission-card fade-in" data-category="machine-learning">
-                        <div class="mission-header">
-                            <h3 class="mission-title"><i class="fas fa-users"></i> Customer Galaxy Mapping</h3>
-                            <div class="mission-status featured">Priority</div>
-                        </div>
-                        <p class="mission-description">
-                            Deployed advanced K-Means clustering algorithms to map 5 distinct customer galaxies, enabling targeted navigation strategies and improving retention by 40% across the data universe.
-                        </p>
-                        <div class="mission-tech">
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">K-Means Clustering</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                        </div>
-                        <div class="mission-actions">
-                            <a href="https://github.com/Mohamedsul/customer-segmentation" target="_blank" class="mission-link">
-                                <i class="fab fa-github"></i> Access Mission
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="mission-card fade-in" data-category="machine-learning">
-                        <div class="mission-header">
-                            <h3 class="mission-title"><i class="fas fa-chart-decline"></i> Churn Prediction System</h3>
-                            <div class="mission-status featured">Priority</div>
-                        </div>
-                        <p class="mission-description">
-                            Engineered predictive models achieving 85% accuracy in identifying at-risk entities, generating potential annual savings of $150K+ through targeted retention protocols.
-                        </p>
-                        <div class="mission-tech">
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">85% Accuracy</span>
-                            <span class="tech-tag">$150K+ Savings</span>
-                            <span class="tech-tag">Python</span>
-                        </div>
-                        <div class="mission-actions">
-                            <a href="https://github.com/Mohamedsul/customer-churn-prediction" target="_blank" class="mission-link">
-                                <i class="fab fa-github"></i> Access Mission
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="mission-card fade-in" data-category="machine-learning">
-                        <div class="mission-header">
-                            <h3 class="mission-title"><i class="fas fa-rocket"></i> DataTransformX Protocol</h3>
-                            <div class="mission-status">Active</div>
-                        </div>
-                        <p class="mission-description">
-                            Constructed comprehensive ML pipeline analyzing Crunchbase galaxy data to predict startup trajectories. Features advanced preprocessing and evaluation systems.
-                        </p>
-                        <div class="mission-tech">
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Classification</span>
-                            <span class="tech-tag">Feature Engineering</span>
-                        </div>
-                        <div class="mission-actions">
-                            <a href="https://github.com/Mohamedsul/dataTransformX" target="_blank" class="mission-link">
-                                <i class="fab fa-github"></i> Access Mission
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Dashboard Missions -->
-                    <div class="mission-card fade-in" data-category="dashboards">
-                        <div class="mission-header">
-                            <h3 class="mission-title"><i class="fas fa-truck"></i> Supply Chain Command</h3>
-                            <div class="mission-status">Active</div>
-                        </div>
-                        <p class="mission-description">
-                            Constructed comprehensive Power BI command center delivering real-time insights into supply chain operations across multiple star systems.
-                        </p>
-                        <div class="mission-tech">
-                            <span class="tech-tag">Power BI</span>
-                            <span class="tech-tag">Real-time Data</span>
-                            <span class="tech-tag">KPI Tracking</span>
-                        </div>
-                        <div class="mission-actions">
-                            <a href="https://github.com/Mohamedsul/Supply-Chain-Analytics-Dashboard-" target="_blank" class="mission-link">
-                                <i class="fab fa-github"></i> Access Mission
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="mission-card fade-in" data-category="dashboards">
-                        <div class="mission-header">
-                            <h3 class="mission-title"><i class="fas fa-gas-pump"></i> Brazilian Fuel Observatory</h3>
-                            <div class="mission-status">Active</div>
-                        </div>
-                        <p class="mission-description">
-                            Developed comprehensive data observatory analyzing Brazilian fuel price patterns using advanced time series analysis and geospatial mapping.
-                        </p>
-                        <div class="mission-tech">
-                            <span class="tech-tag">Power BI</span>
-                            <span class="tech-tag">Time Series</span>
-                            <span class="tech-tag">Geospatial</span>
-                        </div>
-                        <div class="mission-actions">
-                            <a href="https://github.com/Mohamedsul/-Brazilian-Fuel-Prices-Analysis-Dashboard/tree/main" target="_blank" class="mission-link">
-                                <i class="fab fa-github"></i> Access Mission
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="mission-card fade-in" data-category="dashboards">
-                        <div class="mission-header">
-                            <h3 class="mission-title"><i class="fas fa-phone"></i> Telecom Control Center</h3>
-                            <div class="mission-status">Completed</div>
-                        </div>
-                        <p class="mission-description">
-                            Comprehensive Power BI analysis of telecom behavior patterns including churn monitoring and predictive insights for retention strategies.
-                        </p>
-                        <div class="mission-tech">
-                            <span class="tech-tag">Power BI</span>
-                            <span class="tech-tag">Telecom</span>
-                            <span class="tech-tag">Churn Analysis</span>
-                        </div>
-                        <div class="mission-actions">
-                            <a href="https://github.com/Mohamedsul/Telecom-Customer-Churn-Analysis" target="_blank" class="mission-link">
-                                <i class="fab fa-github"></i> Access Mission
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Analytics Missions -->
-                    <div class="mission-card fade-in" data-category="analytics">
-                        <div class="mission-header">
-                            <h3 class="mission-title"><i class="fas fa-flask"></i> Marketing Research Lab</h3>
-                            <div class="mission-status">Active</div>
-                        </div>
-                        <p class="mission-description">
-                            Advanced statistical analysis of marketing campaign effectiveness using A/B testing methodologies and comprehensive data visualization protocols.
-                        </p>
-                        <div class="mission-tech">
-                            <span class="tech-tag">A/B Testing</span>
-                            <span class="tech-tag">Statistical Analysis</span>
-                            <span class="tech-tag">Python</span>
-                        </div>
-                        <div class="mission-actions">
-                            <a href="https://github.com/Mohamedsul/AB_Test_Analysis" target="_blank" class="mission-link">
-                                <i class="fab fa-github"></i> Access Mission
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="mission-card fade-in" data-category="analytics">
-                        <div class="mission-header">
-                            <h3 class="mission-title"><i class="fas fa-chart-pie"></i> Business Intelligence Station</h3>
-                            <div class="mission-status">Completed</div>
-                        </div>
-                        <p class="mission-description">
-                            Comprehensive chocolate sales performance analysis using advanced Excel techniques, exploring trends, profitability, and customer behavior patterns.
-                        </p>
-                        <div class="mission-tech">
-                            <span class="tech-tag">Advanced Excel</span>
-                            <span class="tech-tag">Pivot Tables</span>
-                            <span class="tech-tag">Business Intelligence</span>
-                        </div>
-                        <div class="mission-actions">
-                            <a href="https://github.com/Mohamedsul/Business-Analytics-Excel" target="_blank" class="mission-link">
-                                <i class="fab fa-github"></i> Access Mission
-                            </a>
-                        </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-book"></i> Docs
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Communications Section -->
-        <section id="communications" class="ship-section">
-            <div class="section-container">
-                <div class="section-header fade-in">
-                    <h2 class="section-title hologram-text">Communication Channels</h2>
-                    <p class="section-subtitle">Establish contact with the command bridge across space and time</p>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Automated ETL Pipeline</h3>
+                    <p class="project-subtitle">Data Engineering | Cloud Infrastructure</p>
                 </div>
-                
-                <div class="comm-grid">
-                    <div class="comm-channel fade-in">
-                        <div class="comm-icon">
-                            <i class="fas fa-satellite-dish"></i>
-                        </div>
-                        <h3 class="comm-title">Direct Transmission</h3>
-                        <a href="mailto:MOHSUL659@gmail.com" class="comm-link">MOHSUL659@gmail.com</a>
+                <div class="project-body">
+                    <p class="project-description">
+                        Engineered a scalable ETL pipeline on AWS, automating data ingestion from 
+                        multiple sources and reducing manual processing time by 80% while ensuring 
+                        data quality and consistency.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">AWS Lambda</span>
+                        <span class="tech-tag">S3</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">PostgreSQL</span>
                     </div>
-                    
-                    <div class="comm-channel fade-in">
-                        <div class="comm-icon">
-                            <i class="fas fa-broadcast-tower"></i>
-                        </div>
-                        <h3 class="comm-title">Voice Channel</h3>
-                        <a href="tel:+966558674507" class="comm-link">(+966) 55 8674507</a>
-                    </div>
-                    
-                    <div class="comm-channel fade-in">
-                        <div class="comm-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <h3 class="comm-title">Professional Network</h3>
-                        <a href="https://www.linkedin.com/in/mohamed--suliman" target="_blank" class="comm-link">mohamed--suliman</a>
-                    </div>
-                    
-                    <div class="comm-channel fade-in">
-                        <div class="comm-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <h3 class="comm-title">Code Repository</h3>
-                        <a href="https://github.com/Mohamedsul" target="_blank" class="comm-link">Mohamedsul</a>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-diagram-project"></i> Architecture
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <!-- Ship Footer -->
-    <footer class="ship-section" style="padding: 50px 0; border-top: 1px solid var(--border-glow); background: var(--space-dark);">
-        <div class="section-container">
-            <div style="text-align: center; color: var(--text-secondary);">
-                <p>&copy; 2025 Commander Mohamed Suliman. All Rights Reserved.</p>
-                <p style="margin-top: 0.5rem; color: var(--text-muted);">
-                    Crafted with <span style="color: var(--accent-pink);">♥</span> and <span style="color: var(--primary-cyan);">⚡</span> in the depths of space
-                </p>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Fraud Detection System</h3>
+                    <p class="project-subtitle">Anomaly Detection | Machine Learning</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Implemented an AI-powered fraud detection system identifying suspicious 
+                        transactions in real-time with 94% precision, preventing $2M+ in potential 
+                        losses through advanced anomaly detection.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Isolation Forest</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-file-pdf"></i> Report
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Recommendation Engine</h3>
+                    <p class="project-subtitle">Collaborative Filtering | Deep Learning</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Designed a hybrid recommendation system combining collaborative filtering and 
+                        content-based methods, increasing user engagement by 45% and improving 
+                        conversion rates significantly.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-chart-line"></i> Results
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section fade-in">
+        <div class="section-header">
+            <span class="section-label">
+                <i class="fas fa-paper-plane"></i>
+                CONNECT
+            </span>
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="section-description">
+                Interested in collaborating or discussing data analytics and AI projects? 
+                I'm always open to new opportunities, innovative ideas, and meaningful conversations.
+            </p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-methods">
+                <a href="mailto:Mohsul659@gmail.com" class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p>Mohsul659@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="http://www.linkedin.com/in/mohamed--suliman" class="contact-method" target="_blank" rel="noopener">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>LinkedIn</h3>
+                        <p>Connect with me professionally</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Mohamedsul" class="contact-method" target="_blank" rel="noopener">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>GitHub</h3>
+                        <p>Check out my code repositories</p>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/966558674507" class="contact-method" target="_blank" rel="noopener">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>WhatsApp Business</h3>
+                        <p>Message me directly</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="signature">
+                    <div class="signature-text">Mohamed Suliman</div>
+                    <div class="signature-subtitle">Crafted with passion for data & AI excellence</div>
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2024 Mohamed Suliman. All rights reserved.</p>
+                    <p style="margin-top: 0.5rem; opacity: 0.7;">Built with modern web technologies and a love for clean design</p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="social-links">
+                    <a href="https://github.com/Mohamedsul" class="social-link" target="_blank" rel="noopener" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="http://www.linkedin.com/in/mohamed--suliman" class="social-link" target="_blank" rel="noopener" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/mohamedsuliman" class="social-link" target="_blank" rel="noopener" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:Mohsul659@gmail.com" class="social-link" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Audio Elements -->
-    <audio id="ambientSound" loop preload="auto">
-        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+P1v3QdBDiP1fPNeSsFJHPF8N+SQAoTXbPq7KlXFAlFnuP2wHUdAziN1fPPeS0GI3LF8N+SQQsWXLPq7KpYFQlHnuT2wXUeFDqV2//agTgJNov1//nJjT0LPZl4HwCj+jY=">
-    </audio>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
+    <!-- JavaScript -->
     <script>
-        // ===========================
-        // IMMERSIVE SPACE SYSTEM
-        // ===========================
-        class DeepSpacePortfolio {
-            constructor() {
-                this.soundEnabled = false;
-                this.animationFrameId = null;
-                this.spaceships = [];
-                this.shootingStars = [];
-                this.particles = [];
-                this.missionTexts = [
-                    'Navigating Data Galaxies',
-                    'Machine Learning Navigator',
-                    'Deep Space Explorer',
-                    'Cosmic Data Analyst',
-                    'Interstellar Problem Solver',
-                    'Universe Data Commander'
-                ];
-                this.currentTextIndex = 0;
-                this.charIndex = 0;
-                this.isDeleting = false;
-                
-                this.init();
-            }
-
-            init() {
-                this.setupLoadingSequence();
-                this.setupCustomCursor();
-                this.setupNavigation();
-                this.setupScrollEffects();
-                this.createSpaceEnvironment();
-                this.setupMissionFilters();
-                this.setupCounterAnimations();
-                this.setupTypingEffect();
-                this.setupSoundControl();
-                this.setupIntersectionObserver();
-                this.startSpaceAnimations();
-                this.showWelcomeNotification();
-            }
-
-            // ===========================
-            // LOADING SEQUENCE
-            // ===========================
-            setupLoadingSequence() {
-                const loadingScreen = document.getElementById('loadingScreen');
-                const loadingText = document.querySelector('.loading-text');
-                
-                const loadingMessages = [
-                    'Initializing Deep Space Systems...',
-                    'Calibrating Stellar Navigation...',
-                    'Loading Cosmic Coordinates...',
-                    'Establishing Interstellar Links...',
-                    'Deep Space Systems Online!'
-                ];
-                
-                let messageIndex = 0;
-                const messageInterval = setInterval(() => {
-                    if (messageIndex < loadingMessages.length) {
-                        loadingText.textContent = loadingMessages[messageIndex];
-                        messageIndex++;
-                    } else {
-                        clearInterval(messageInterval);
-                        setTimeout(() => {
-                            loadingScreen.classList.add('hidden');
-                            document.body.style.cursor = 'none';
-                        }, 500);
-                    }
-                }, 800);
-            }
-
-            // ===========================
-            // SPACE ENVIRONMENT CREATION
-            // ===========================
-            createSpaceEnvironment() {
-                this.createFloatingParticles();
-                this.createShootingStars();
-                this.scheduleSpaceships();
-            }
-
-            createFloatingParticles() {
-                const particlesContainer = document.getElementById('spaceParticles');
-                
-                for (let i = 0; i < 30; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    
-                    const size = Math.random() * 3 + 1;
-                    particle.style.width = size + 'px';
-                    particle.style.height = size + 'px';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDelay = Math.random() * 20 + 's';
-                    particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
-                    
-                    const colors = ['#00ffff', '#8b5cf6', '#f471b5', '#10b981'];
-                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    
-                    particlesContainer.appendChild(particle);
-                    this.particles.push(particle);
-                }
-            }
-
-            createShootingStars() {
-                const shootingContainer = document.getElementById('shootingStars');
-                
-                setInterval(() => {
-                    if (Math.random() < 0.3) {
-                        const star = document.createElement('div');
-                        star.className = 'shooting-star';
-                        
-                        star.style.left = Math.random() * 100 + '%';
-                        star.style.top = Math.random() * 50 + '%';
-                        star.style.animation = 'shootingStar 2s linear forwards';
-                        
-                        shootingContainer.appendChild(star);
-                        
-                        setTimeout(() => {
-                            if (star.parentNode) {
-                                star.parentNode.removeChild(star);
-                            }
-                        }, 2000);
-                    }
-                }, 3000);
-            }
-
-            scheduleSpaceships() {
-                setInterval(() => {
-                    if (Math.random() < 0.4) {
-                        this.createSpaceship();
-                    }
-                }, 8000);
-            }
-
-            createSpaceship() {
-                const container = document.getElementById('spaceshipContainer');
-                const spaceship = document.createElement('div');
-                spaceship.className = 'spaceship';
-                
-                const startSide = Math.random() < 0.5 ? 'left' : 'right';
-                const startY = Math.random() * 80 + 10;
-                
-                if (startSide === 'left') {
-                    spaceship.style.left = '-50px';
-                    spaceship.style.top = startY + '%';
-                    spaceship.style.transform = 'rotate(45deg)';
-                } else {
-                    spaceship.style.right = '-50px';
-                    spaceship.style.top = startY + '%';
-                    spaceship.style.transform = 'rotate(-135deg)';
-                }
-                
-                container.appendChild(spaceship);
-                
-                // Animate spaceship
-                setTimeout(() => {
-                    spaceship.style.opacity = '1';
-                    spaceship.style.transition = 'all 3s linear';
-                    
-                    if (startSide === 'left') {
-                        spaceship.style.left = 'calc(100% + 50px)';
-                        spaceship.style.top = (startY - 20) + '%';
-                    } else {
-                        spaceship.style.right = 'calc(100% + 50px)';
-                        spaceship.style.top = (startY - 20) + '%';
-                    }
-                }, 100);
-                
-                setTimeout(() => {
-                    if (spaceship.parentNode) {
-                        spaceship.parentNode.removeChild(spaceship);
-                    }
-                }, 3500);
-                
-                this.spaceships.push(spaceship);
-            }
-
-            // ===========================
-            // CUSTOM CURSOR
-            // ===========================
-            setupCustomCursor() {
-                const cursor = document.getElementById('cursor');
-                let mouseX = 0, mouseY = 0;
-                let cursorX = 0, cursorY = 0;
-
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                });
-
-                const animateCursor = () => {
-                    cursorX += (mouseX - cursorX) * 0.1;
-                    cursorY += (mouseY - cursorY) * 0.1;
-                    
-                    cursor.style.left = cursorX - 10 + 'px';
-                    cursor.style.top = cursorY - 10 + 'px';
-                    
-                    requestAnimationFrame(animateCursor);
-                };
-                
-                animateCursor();
-
-                // Cursor interactions
-                const interactiveElements = document.querySelectorAll('a, button, .filter-btn, .mission-card, .system-module');
-                interactiveElements.forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        cursor.style.transform = 'scale(1.5)';
-                        cursor.style.background = 'radial-gradient(circle, rgba(139, 92, 246, 0.8), transparent)';
-                    });
-                    
-                    el.addEventListener('mouseleave', () => {
-                        cursor.style.transform = 'scale(1)';
-                        cursor.style.background = 'radial-gradient(circle, rgba(0, 255, 255, 0.8), transparent)';
-                    });
-                });
-            }
-
-            // ===========================
-            // NAVIGATION SYSTEM
-            // ===========================
-            setupNavigation() {
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const targetId = anchor.getAttribute('href');
-                        const target = document.querySelector(targetId);
-                        
-                        if (target) {
-                            const headerHeight = 80;
-                            const targetPosition = target.offsetTop - headerHeight;
-                            
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
-                });
-            }
-
-            // ===========================
-            // SCROLL EFFECTS & PARALLAX
-            // ===========================
-            setupScrollEffects() {
-                const navHud = document.getElementById('navHud');
-                const returnToBridge = document.getElementById('returnToBridge');
-                const starsLayers = document.querySelectorAll('.stars-layer');
-                const celestialBodies = document.querySelector('.celestial-bodies');
-
-                window.addEventListener('scroll', () => {
-                    const scrollTop = window.pageYOffset;
-
-                    // Navigation effects
-                    if (scrollTop > 100) {
-                        navHud.classList.add('active');
-                    } else {
-                        navHud.classList.remove('active');
-                    }
-
-                    // Return button
-                    if (scrollTop > 500) {
-                        returnToBridge.classList.add('visible');
-                    } else {
-                        returnToBridge.classList.remove('visible');
-                    }
-
-                    // Parallax effects
-                    const parallaxSpeed = scrollTop * 0.5;
-                    starsLayers.forEach((layer, index) => {
-                        const speed = (index + 1) * 0.2;
-                        layer.style.transform = `translateY(${parallaxSpeed * speed}px)`;
-                    });
-
-                    if (celestialBodies) {
-                        celestialBodies.style.transform = `translateY(${parallaxSpeed * 0.3}px)`;
-                    }
-                });
-
-                // Return to bridge
-                returnToBridge.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-
-            // ===========================
-            // SPACE ANIMATIONS
-            // ===========================
-            startSpaceAnimations() {
-                // Add dynamic shooting star animation
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes shootingStar {
-                        0% {
-                            opacity: 0;
-                            transform: translateX(0) translateY(0) scale(0);
-                        }
-                        10% {
-                            opacity: 1;
-                        }
-                        90% {
-                            opacity: 1;
-                        }
-                        100% {
-                            opacity: 0;
-                            transform: translateX(300px) translateY(150px) scale(1);
-                        }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-
-            // ===========================
-            // MISSION FILTERS
-            // ===========================
-            setupMissionFilters() {
-                const filterButtons = document.querySelectorAll('.filter-btn');
-                const missionCards = document.querySelectorAll('.mission-card');
-
-                filterButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const category = button.getAttribute('data-category');
-                        
-                        // Update active filter
-                        filterButtons.forEach(btn => btn.classList.remove('active'));
-                        button.classList.add('active');
-                        
-                        // Filter missions
-                        missionCards.forEach(card => {
-                            const cardCategory = card.getAttribute('data-category');
-                            
-                            if (category === 'all' || cardCategory === category) {
-                                card.classList.remove('hidden');
-                            } else {
-                                card.classList.add('hidden');
-                            }
-                        });
-
-                        // Show notification
-                        const categoryName = button.textContent.trim();
-                        this.showNotification('Navigation Updated', `Viewing: ${categoryName}`);
-                    });
-                });
-            }
-
-            // ===========================
-            // COUNTER ANIMATIONS
-            // ===========================
-            setupCounterAnimations() {
-                const counters = document.querySelectorAll('.stat-value');
-                
-                const counterObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const counter = entry.target;
-                            const target = parseInt(counter.getAttribute('data-count'));
-                            const increment = target / 60;
-                            let current = 0;
-
-                            const updateCounter = () => {
-                                if (current < target) {
-                                    current += increment;
-                                    counter.textContent = Math.ceil(current);
-                                    requestAnimationFrame(updateCounter);
-                                } else {
-                                    counter.textContent = target;
-                                }
-                            };
-
-                            updateCounter();
-                            counterObserver.unobserve(counter);
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                counters.forEach(counter => {
-                    counterObserver.observe(counter);
-                });
-            }
-
-            // ===========================
-            // TYPING EFFECT
-            // ===========================
-            setupTypingEffect() {
-                const missionStatus = document.getElementById('missionStatus');
-                
-                const typeEffect = () => {
-                    const currentText = this.missionTexts[this.currentTextIndex];
-                    
-                    if (this.isDeleting) {
-                        missionStatus.textContent = currentText.substring(0, this.charIndex - 1);
-                        this.charIndex--;
-                    } else {
-                        missionStatus.textContent = currentText.substring(0, this.charIndex + 1);
-                        this.charIndex++;
-                    }
-
-                    let typingSpeed = this.isDeleting ? 50 : 100;
-
-                    if (!this.isDeleting && this.charIndex === currentText.length) {
-                        this.isDeleting = true;
-                        typingSpeed = 2000;
-                    } else if (this.isDeleting && this.charIndex === 0) {
-                        this.isDeleting = false;
-                        this.currentTextIndex = (this.currentTextIndex + 1) % this.missionTexts.length;
-                        typingSpeed = 500;
-                    }
-
-                    setTimeout(typeEffect, typingSpeed);
-                };
-
-                typeEffect();
-            }
-
-            // ===========================
-            // SOUND CONTROL
-            // ===========================
-            setupSoundControl() {
-                const soundControl = document.getElementById('soundControl');
-                const ambientSound = document.getElementById('ambientSound');
-                
-                soundControl.addEventListener('click', () => {
-                    this.soundEnabled = !this.soundEnabled;
-                    
-                    if (this.soundEnabled) {
-                        ambientSound.play().catch(() => {
-                            console.log('Audio play failed - user interaction required');
-                        });
-                        soundControl.innerHTML = '<i class="fas fa-volume-up"></i>';
-                        soundControl.classList.remove('muted');
-                        this.showNotification('Audio Systems', 'Deep space sounds activated');
-                    } else {
-                        ambientSound.pause();
-                        soundControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
-                        soundControl.classList.add('muted');
-                        this.showNotification('Audio Systems', 'Sound systems deactivated');
-                    }
-                });
-            }
-
-            // ===========================
-            // INTERSECTION OBSERVER
-            // ===========================
-            setupIntersectionObserver() {
-                const observerOptions = {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                }, observerOptions);
-
-                document.querySelectorAll('.fade-in').forEach(el => {
-                    observer.observe(el);
-                });
-            }
-
-            // ===========================
-            // NOTIFICATIONS
-            // ===========================
-            showNotification(title, message) {
-                const notification = document.getElementById('systemNotification');
-                const titleEl = notification.querySelector('h4');
-                const messageEl = notification.querySelector('p');
-                
-                titleEl.textContent = title;
-                messageEl.textContent = message;
-                
-                notification.classList.add('show');
-                
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 3000);
-            }
-
-            showWelcomeNotification() {
-                setTimeout(() => {
-                    this.showNotification('Deep Space Systems Online', 'Welcome to the cosmic data universe, Commander!');
-                }, 2000);
-            }
-        }
-
-        // ===========================
-        // INITIALIZE DEEP SPACE SYSTEM
-        // ===========================
-        document.addEventListener('DOMContentLoaded', () => {
-            new DeepSpacePortfolio();
-        });
-
-        // ===========================
-        // PERFORMANCE OPTIMIZATIONS
-        // ===========================
-        document.addEventListener('visibilitychange', () => {
-            const animations = document.querySelectorAll('.particle, .stars-layer, .nebula-layer, .sun, .planet, .moon');
-            if (document.hidden) {
-                animations.forEach(el => {
-                    el.style.animationPlayState = 'paused';
-                });
-            } else {
-                animations.forEach(el => {
-                    el.style.animationPlayState = 'running';
-                });
-            }
-        });
-
-        // Reduce motion for accessibility
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            document.documentElement.style.setProperty('--transition-smooth', 'none');
-            
-            const animatedElements = document.querySelectorAll('.particle, .stars-layer, .nebula-layer, .sun, .planet, .moon');
-            animatedElements.forEach(el => {
-                el.style.animation = 'none';
-            });
-        }
-
-        // ===========================
-        // EASTER EGGS & INTERACTIONS
-        // ===========================
-        
-        // Konami code easter egg for special space mode
-        let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
-        let konamiIndex = 0;
-
-        document.addEventListener('keydown', (e) => {
-            if (e.keyCode === konamiCode[konamiIndex]) {
-                konamiIndex++;
-                if (konamiIndex === konamiCode.length) {
-                    // Activate special space mode
-                    const spaceUniverse = document.querySelector('.space-universe');
-                    spaceUniverse.style.animation = 'hyperspace 3s ease-in-out';
-                    
-                    // Add hyperspace animation
-                    const style = document.createElement('style');
-                    style.textContent = `
-                        @keyframes hyperspace {
-                            0% { filter: hue-rotate(0deg) brightness(1); }
-                            50% { filter: hue-rotate(180deg) brightness(1.5); }
-                            100% { filter: hue-rotate(360deg) brightness(1); }
-                        }
-                    `;
-                    document.head.appendChild(style);
-                    
-                    setTimeout(() => {
-                        spaceUniverse.style.animation = '';
-                        style.remove();
-                    }, 3000);
-                    
-                    // Show special notification
-                    const notification = document.getElementById('systemNotification');
-                    const titleEl = notification.querySelector('h4');
-                    const messageEl = notification.querySelector('p');
-                    
-                    titleEl.textContent = 'Hyperspace Jump Activated!';
-                    messageEl.textContent = 'Welcome to the secret dimension, Space Commander!';
-                    notification.classList.add('show');
-                    
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 4000);
-                    
-                    konamiIndex = 0;
-                }
-            } else {
-                konamiIndex = 0;
-            }
-        });
-
-        // Double-click on planets for special effects
-        document.querySelectorAll('.planet').forEach(planet => {
-            planet.addEventListener('dblclick', () => {
-                planet.style.animation = 'planetExplode 2s ease-out forwards';
-                
-                const explodeStyle = document.createElement('style');
-                explodeStyle.textContent = `
-                    @keyframes planetExplode {
-                        0% { transform: scale(1); filter: brightness(1); }
-                        50% { transform: scale(1.5); filter: brightness(3); }
-                        100% { transform: scale(0.8); filter: brightness(1); }
-                    }
-                `;
-                document.head.appendChild(explodeStyle);
-                
-                setTimeout(() => {
-                    planet.style.animation = '';
-                    explodeStyle.remove();
-                }, 2000);
-            });
-        });
-
-        // ===========================
-        // ERROR HANDLING
-        // ===========================
-        window.addEventListener('error', (e) => {
-            console.error('Deep space system error:', e.error);
-        });
-
-        // ===========================
-        // CONSOLE MESSAGES
-        // ===========================
-        console.log('🚀 Deep Space Portfolio Systems Online!');
-        console.log('🌌 Welcome to Commander Mohamed Suliman\'s Cosmic Data Universe!');
-        console.log('🛸 Navigate through space sections to explore different ship modules');
-        console.log('🎮 Try the Konami code (↑↑↓↓←→←→BA) for a hyperspace surprise!');
-        console.log('🔊 Click the sound control to enable immersive space sounds');
-        console.log('🪐 Double-click on planets for special effects!');
-        console.log('⭐ Watch for shooting stars and spaceships crossing your view!');
-        console.log('🌟 Enjoy your journey through the infinite data cosmos!');
-
-        // ===========================
-        // ADDITIONAL SPACE INTERACTIONS
-        // ===========================
-        
-        // Click on sun for day/night cycle simulation
-        document.querySelector('.sun').addEventListener('click', () => {
-            const universe = document.querySelector('.space-universe');
-            universe.style.transition = 'filter 2s ease';
-            universe.style.filter = 'brightness(1.5) contrast(1.2)';
-            
+        // ==================== LOADING SCREEN ====================
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
             setTimeout(() => {
-                universe.style.filter = '';
-                setTimeout(() => {
-                    universe.style.transition = '';
-                }, 100);
-            }, 3000);
+                loadingScreen.classList.add('hidden');
+            }, 500);
         });
 
-        // Hover effects for celestial bodies
-        document.querySelectorAll('.planet, .moon').forEach(body => {
-            body.addEventListener('mouseenter', () => {
-                body.style.filter = 'brightness(1.3) saturate(1.2)';
-                body.style.transform = body.style.transform + ' scale(1.1)';
-            });
-            
-            body.addEventListener('mouseleave', () => {
-                body.style.filter = '';
-                body.style.transform = body.style.transform.replace(' scale(1.1)', '');
+        // ==================== MOBILE MENU ====================
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
             });
         });
 
-        // ===========================
-        // DYNAMIC CONTENT LOADING
-        // ===========================
+        // ==================== NAVBAR SCROLL EFFECT ====================
+        const navbar = document.getElementById('navbar');
         
-        // Simulate loading different space sectors
-        function loadSpaceSector(sectorName) {
-            const notification = document.getElementById('systemNotification');
-            const titleEl = notification.querySelector('h4');
-            const messageEl = notification.querySelector('p');
-            
-            titleEl.textContent = 'Sector Change';
-            messageEl.textContent = `Entering ${sectorName} sector...`;
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 2000);
-        }
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-        // Add sector change notifications when scrolling to different sections
-        const sections = document.querySelectorAll('section');
-        const sectorObserver = new IntersectionObserver((entries) => {
+        // ==================== SCROLL ANIMATIONS ====================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const sectionId = entry.target.id;
-                    let sectorName = '';
-                    
-                    switch(sectionId) {
-                        case 'bridge':
-                            sectorName = 'Command Bridge';
-                            break;
-                        case 'about':
-                            sectorName = 'Personal Quarters';
-                            break;
-                        case 'systems':
-                            sectorName = 'Engineering Bay';
-                            break;
-                        case 'missions':
-                            sectorName = 'Mission Archive';
-                            break;
-                        case 'communications':
-                            sectorName = 'Communication Hub';
-                            break;
-                    }
-                    
-                    if (sectorName) {
-                        setTimeout(() => loadSpaceSector(sectorName), 500);
-                    }
+                    entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.6 });
+        }, observerOptions);
 
-        sections.forEach(section => {
-            sectorObserver.observe(section);
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ==================== SMOOTH SCROLL ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
 
-        // ===========================
-        // FINAL INITIALIZATION
-        // ===========================
+        // ==================== ACTIVE NAV LINK ====================
+        const sections = document.querySelectorAll('section[id]');
         
-        // Ensure all space elements are properly initialized
-        setTimeout(() => {
-            // Add final touches to the space environment
-            const spaceUniverse = document.querySelector('.space-universe');
-            spaceUniverse.style.opacity = '1';
+        window.addEventListener('scroll', () => {
+            let current = '';
             
-            // Start ambient particle effects
-            setInterval(() => {
-                if (Math.random() < 0.1) {
-                    const randomParticle = document.querySelector('.particle');
-                    if (randomParticle) {
-                        randomParticle.style.filter = 'brightness(2) saturate(2)';
-                        setTimeout(() => {
-                            randomParticle.style.filter = '';
-                        }, 500);
-                    }
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
                 }
-            }, 2000);
-            
-        }, 1000);
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ==================== SCROLL TO TOP BUTTON ====================
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ==================== CONSOLE MESSAGE ====================
+        console.log('%c🚀 Professional Portfolio Loaded Successfully', 'color: #3b82f6; font-size: 18px; font-weight: bold;');
+        console.log('%c💼 Mohamed Suliman | AI & Data Analytics Professional', 'color: #8b5cf6; font-size: 14px;');
+        console.log('%c📧 Contact: Check the website for details', 'color: #06b6d4; font-size: 12px;');
+        console.log('%c⭐ Built with passion for data & AI', 'color: #10b981; font-size: 12px;');
+
+        // ==================== PARTICLE EFFECT ====================
+        document.querySelectorAll('.particle').forEach(particle => {
+            const randomDelay = Math.random() * 2;
+            const randomDuration = 3 + Math.random() * 2;
+            particle.style.animationDelay = `${randomDelay}s`;
+            particle.style.animationDuration = `${randomDuration}s`;
+        });
     </script>
 </body>
 </html>
